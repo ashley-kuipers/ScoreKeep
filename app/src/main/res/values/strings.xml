@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CardScoreCalculator</string>
+    <string name="title">Card Score Calculator</string>
+    <string name="subTitle">How would you like to keep score?</string>
+    <string name="homeButton1">Local</string>
+    <string name="homeButton2">Online</string>
 </resources>
