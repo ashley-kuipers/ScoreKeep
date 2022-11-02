@@ -2,59 +2,91 @@
     <!-- Base application theme. -->
     <style name="Theme.CardScoreCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/tertiary</item>
+        <item name="colorSecondary">@color/orange</item>
+        <item name="colorSecondaryVariant">@color/blue</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:statusBarColor">@color/pink_dark</item>
         <!-- Customize your theme here. -->
         <item name="materialButtonStyle">@style/primaryButton</item>
-        <item name="android:background">@color/primary</item>
+        <item name="android:background">@color/pink</item>
         <item name="floatingActionButtonStyle">@style/fab</item>
+        <item name="editTextStyle">@style/et</item>
+        <item name="android:textViewStyle">@style/h3</item>
 
     </style>
+
+<!--    Buttons-->
     <style name="primaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="backgroundTint">@color/orange</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:paddingBottom">12dp</item>
         <item name="android:paddingTop">12dp</item>
-        <item name="android:paddingStart">40dp</item>
-        <item name="android:paddingEnd">40dp</item>
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:paddingRight">40dp</item>
         <item name="android:textSize">24sp</item>
         <item name="android:letterSpacing">0.1</item>
-        <item name="backgroundTint">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="primaryButtonSmall" parent="@style/primaryButton">
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="secondaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/secondary</item>
+        <item name="backgroundTint">@color/blue</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:paddingBottom">12dp</item>
         <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:paddingRight">40dp</item>
         <item name="strokeColor">@color/transparent</item>
+    </style>
+
+    <style name="secondaryButtonSmall" parent="@style/secondaryButton">
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="tertiaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/tertiary</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/pink</item>
         <item name="android:paddingBottom">12dp</item>
         <item name="android:paddingTop">12dp</item>
         <item name="strokeColor">@color/transparent</item>
     </style>
 
+    <style name="tertiaryButtonSmall" parent="@style/tertiaryButton">
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+<!--    Floating Action Buttons -->
     <style name="fab_transparent" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="backgroundTint">@color/primary</item>
+        <item name="backgroundTint">@color/pink</item>
         <item name="android:elevation">0dp</item>
-<!--        <item name="borderWidth">0dp</item>-->
+        <item name="borderWidth">0dp</item>
     </style>
 
     <style name="fab" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="backgroundTint">@color/secondary</item>
+        <item name="backgroundTint">@color/orange</item>
     </style>
 
+<!--    TextViews-->
     <style name="h1" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">54sp</item>
         <item name="android:textColor">@color/white</item>
@@ -66,21 +98,47 @@
     </style>
 
     <style name="h2" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">38sp</item>
+        <item name="android:textSize">34sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textAlignment">center</item>
         <item name="android:layout_marginBottom">24dp</item>
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">24dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="h3" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">26sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textAlignment">center</item>
         <item name="android:layout_marginBottom">24dp</item>
-        <item name="android:paddingStart">24dp</item>
-        <item name="android:paddingEnd">24dp</item>
+    </style>
+
+    <style name="h4" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+    </style>
+
+    <style name="scoreboardNames" parent="@style/h4">
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+    </style>
+
+<!--    EditTexts -->
+    <style name="et" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColorHint">#B9FFFFFF</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="et_scores" parent="et">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
 </resources>

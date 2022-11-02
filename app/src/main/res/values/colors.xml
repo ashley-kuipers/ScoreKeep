@@ -8,17 +8,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primary">#fb41a4</color>
-    <color name="primary_light">#fa7abe</color>
-    <color name="primary_dark">#d10f76</color>
+    <color name="pink">#fb41a4</color>
+    <color name="pink_light">#fa7abe</color>
+    <color name="pink_dark">#d10f76</color>
 
+    <color name="text_dark">#5E5E5E</color>
 
-    <color name="text_primary">#5E5E5E</color>
-
-    <color name="secondary">#FB9E74</color>
-    <color name="secondary_dark">#F87B42</color>
-    <color name="tertiary">#70DDE1</color>
-    <color name="tertiary_dark">#29B7BC</color>
+    <color name="orange">#FB9E74</color>
+    <color name="orange_dark">#F87B42</color>
+    <color name="blue">#70DDE1</color>
+    <color name="blue_dark">#29B7BC</color>
 
     <color name="transparent">#00000000</color>
 

@@ -1,7 +1,32 @@
 <resources>
     <string name="app_name">CardScoreCalculator</string>
-    <string name="title">Card Score Calculator</string>
-    <string name="subTitle">How would you like to keep score?</string>
-    <string name="homeButton1">Local</string>
-    <string name="homeButton2">Online</string>
+
+    <!--    Home -->
+    <string name="titleHome">Card Score Calculator</string>
+    <string name="subTitleHome">How would you like to keep score?</string>
+    <string name="b_local">Local</string>
+    <string name="b_online">Online</string>
+
+    <!--    Local Setup -->
+    <string name="titleLocalSetup">How many players do you have?</string>
+    <string name="e_numPlayers">Enter Number</string>
+    <string name="b_start">OK</string>
+
+    <!--    Local Setup Fragment -->
+    <string name="b_numPlayers">Done</string>
+    <string name="ethint_enterName">Enter Name</string>
+
+    <!--    Local Scoreboard -->
+    <string name="scoreboardTitle">Scores</string>
+    <string name="tableNames"><u>Names</u></string>
+    <string name="tableCurrent">Current <u>Score</u></string>
+    <string name="tableNew">This <u>Round</u></string>
+    <string name="et_newScore">0</string>
+    <string name="b_endround">Add Scores</string>
+    <string name="b_endGame">End Game</string>
+
+    <!--    Local End Game-->
+    <string name="endGameTitle">The results are in...</string>
+    <string name="b_playAgain">Play Again</string>
+    <string name="winner"><u>WINNER</u></string>
 </resources>

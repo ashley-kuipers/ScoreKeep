@@ -39,14 +39,16 @@
             style="@style/h1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title" />
+            android:text="@string/titleHome" />
 
         <TextView
             android:id="@+id/t_homesubtitle"
             style="@style/h3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/subTitle" />
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="@string/subTitleHome" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -56,17 +58,17 @@
 
             <Button
                 android:id="@+id/b_local"
-                style="@style/secondaryButton"
+                style="@style/primaryButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/homeButton1" />
+                android:text="@string/b_local" />
 
             <Button
                 android:id="@+id/b_online"
-                style="@style/tertiaryButton"
+                style="@style/secondaryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/homeButton2" />
+                android:text="@string/b_online" />
         </LinearLayout>
     </LinearLayout>
 
