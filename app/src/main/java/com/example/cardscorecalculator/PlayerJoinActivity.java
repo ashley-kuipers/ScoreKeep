@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,10 +46,18 @@ public class PlayerJoinActivity extends AppCompatActivity {
             Player player = new Player(userName, 0);
             dao.addPlayer(roomCode, player);
 
-            Intent in = new Intent(PlayerJoinActivity.this, OnlineScoreboardActivity.class);
-            in.putExtra("roomCode", roomCode);
-            in.putExtra("enteredName", userName);
-            startActivity(in);
+            // need to add delay so database has time to update
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent in = new Intent(PlayerJoinActivity.this, OnlineScoreboardActivity.class);
+                    in.putExtra("roomCode", roomCode);
+                    in.putExtra("enteredName", userName);
+                    startActivity(in);
+                }
+            }, 400);
+
         });
 
     }
