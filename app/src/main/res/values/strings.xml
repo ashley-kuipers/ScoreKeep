@@ -29,4 +29,17 @@
     <string name="endGameTitle">The results are in...</string>
     <string name="b_playAgain">Play Again</string>
     <string name="winner"><u>WINNER</u></string>
+
+    <!--    Online Setup-->
+    <string name="hint_username">Jane</string>
+    <string name="b_startOL">Host Game</string>
+    <string name="b_joinOL">Join Game</string>
+
+    <!--    Online Host Start-->
+    <string name="roomCodeTitle">Your Room Code will be:</string>
+
+    <!--    Online Player Start-->
+    <string name="enterRoomCode">Enter Room Code:</string>
+    <string name="ethint_roomCode">WXYZ</string>
+
 </resources>

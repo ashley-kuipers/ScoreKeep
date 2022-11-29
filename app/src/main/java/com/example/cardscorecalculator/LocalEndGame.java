@@ -21,7 +21,7 @@ import java.util.TreeMap;
 
 public class LocalEndGame extends AppCompatActivity {
     HashMap<Integer, String> map;
-    TreeMap<Integer, String> tm;
+//    TreeMap<Integer, String> tm;
     LinearLayout results;
     TextView t_winner;
     Button b_playAgain;
