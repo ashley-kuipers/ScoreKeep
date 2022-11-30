@@ -46,12 +46,13 @@ public class HostStartActivity extends AppCompatActivity {
 
         DAORoom dao = new DAORoom();
         b_openRoom.setOnClickListener( v->{
-            Player player = new Player(userName, 0);
+            Player player = new Player(userName, 0, true);
             dao.addPlayer(roomCode, player);
 
             // Open score list intent
             Intent in = new Intent(HostStartActivity.this, OnlineScoreboardActivity.class);
             in.putExtra("roomCode", roomCode);
+            in.putExtra("enteredName", userName);
             startActivity(in);
         });
 

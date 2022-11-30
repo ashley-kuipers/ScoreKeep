@@ -13,15 +13,13 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
 
 public class LocalScoreboard extends AppCompatActivity {
     ArrayList<String> names = new ArrayList<String>();
     ArrayList<EditText> et_scores = new ArrayList<EditText>();
     ArrayList<TextView> tv_scores = new ArrayList<TextView>();
     ArrayList<Integer> scores = new ArrayList<Integer>();
-    HashMap<Integer, String> map= new HashMap<Integer, String>();;
+    HashMap<Integer, String> map= new HashMap<Integer, String>();
     Context context;
     Button b_addScores, b_endGame;
 
@@ -119,8 +117,8 @@ public class LocalScoreboard extends AppCompatActivity {
                 }
 
                 // start endgame activity and send hashtable
-                LocalEndGame endGame = new LocalEndGame();
-                Intent in = new Intent(context, LocalEndGame.class);
+                EndGame endGame = new EndGame();
+                Intent in = new Intent(context, EndGame.class);
                 in.putExtra("scores", map);
                 startActivity(in);
             }

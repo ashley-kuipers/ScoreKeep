@@ -41,7 +41,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".LocalEndGame"
+            android:name=".EndGame"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

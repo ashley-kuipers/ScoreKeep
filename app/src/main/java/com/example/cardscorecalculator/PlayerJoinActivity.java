@@ -43,7 +43,7 @@ public class PlayerJoinActivity extends AppCompatActivity {
             // TODO: some input validation here
             roomCode = et_roomCode.getText().toString();
 
-            Player player = new Player(userName, 0);
+            Player player = new Player(userName, 0, false);
             dao.addPlayer(roomCode, player);
 
             // need to add delay so database has time to update

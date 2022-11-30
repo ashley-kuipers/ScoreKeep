@@ -1,7 +1,6 @@
 package com.example.cardscorecalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.TextViewCompat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,16 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
-public class LocalEndGame extends AppCompatActivity {
+public class EndGame extends AppCompatActivity {
     HashMap<Integer, String> map;
 //    TreeMap<Integer, String> tm;
     LinearLayout results;

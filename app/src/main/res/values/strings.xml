@@ -31,7 +31,7 @@
     <string name="winner"><u>WINNER</u></string>
 
     <!--    Online Setup-->
-    <string name="hint_username">Jane</string>
+    <string name="hint_username">JANE</string>
     <string name="b_startOL">Host Game</string>
     <string name="b_joinOL">Join Game</string>
 
@@ -41,5 +41,9 @@
     <!--    Online Player Start-->
     <string name="enterRoomCode">Enter Room Code:</string>
     <string name="ethint_roomCode">WXYZ</string>
+
+    <!--    Online Scoreboard -->
+    <string name="add">+</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

@@ -3,12 +3,14 @@ package com.example.cardscorecalculator;
 public class Player {
     private String name;
     private int score;
+    private boolean host;
 
 
     public Player(){};
-    public Player(String name, int score){
+    public Player(String name, int score, boolean host){
         this.name = name;
         this.score = score;
+        this.host = host;
     }
 
     public String getName() {
@@ -25,5 +27,13 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public boolean isHost() {
+        return host;
+    }
+
+    public void setHost(boolean host) {
+        this.host = host;
     }
 }
