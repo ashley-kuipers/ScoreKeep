@@ -25,7 +25,7 @@ public class EndGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_local_end_game);
+        setContentView(R.layout.activity_end_game);
         map = (HashMap<Integer, String>) getIntent().getSerializableExtra("scores");
         results = findViewById(R.id.results);
         t_winner = findViewById(R.id.t_winner);

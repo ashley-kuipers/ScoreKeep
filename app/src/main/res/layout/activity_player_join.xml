@@ -7,12 +7,23 @@
     android:orientation="vertical"
     tools:context=".PlayerJoinActivity">
 
+    <EditText
+        android:id="@+id/et_name2"
+        style="@style/et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="8"
+        android:hint="Enter Nickname"
+        android:inputType="textPersonName"
+        android:textSize="30sp" />
+
     <TextView
-        android:id="@+id/t_enterRoomCode"
+        android:id="@+id/t_enterRoomCode2"
         style="@style/h2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/enterRoomCode" />
 
     <EditText
@@ -20,24 +31,19 @@
         style="@style/et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:hint="@string/ethint_roomCode"
+        android:layout_marginBottom="20dp"
+        android:ems="8"
+        android:hint="Room Code"
         android:inputType="textPersonName"
         android:textAlignment="center"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"
+        android:textSize="30sp" />
 
-    <LinearLayout
+    <Button
+        android:id="@+id/b_joinRoom"
+        style="@style/secondaryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/b_joinRoom"
-            style="@style/secondaryButtonSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/b_joinOL" />
-    </LinearLayout>
+        android:text="@string/b_joinOL" />
 
 </LinearLayout>

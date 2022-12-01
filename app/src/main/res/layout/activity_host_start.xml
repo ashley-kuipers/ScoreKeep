@@ -8,12 +8,26 @@
     android:orientation="vertical"
     tools:context=".HostStartActivity">
 
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Enter Nickname"
+        android:inputType="textPersonName"
+        android:textSize="30sp" />
+
     <TextView
         android:id="@+id/t_roomCodeTitle"
         style="@style/h2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:text="@string/roomCodeTitle" />
 
     <TextView
@@ -21,7 +35,7 @@
         style="@style/h1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="30dp"
         android:text="ROOM" />
 
     <Button

@@ -18,8 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 
 public class PlayerJoinActivity extends AppCompatActivity {
     Button b_join;
-    TextView t_roomCodeTitle;
-    EditText et_roomCode;
+    EditText et_roomCode, et_name;
     String userName, roomCode;
 
     @Override
@@ -29,22 +28,17 @@ public class PlayerJoinActivity extends AppCompatActivity {
 
         b_join = findViewById(R.id.b_joinRoom);
         et_roomCode = findViewById(R.id.et_roomCode);
-        t_roomCodeTitle = findViewById(R.id.t_enterRoomCode);
-
-        // get data from intent
-        Bundle bun = getIntent().getExtras();
-        userName = bun.getString("enteredName");
-
-        String out = "Hello " + userName.toUpperCase() + ", enter the Room Code provided by your host:";
-        t_roomCodeTitle.setText(out);
+        et_name = findViewById(R.id.et_name2);
 
         DAORoom dao = new DAORoom();
+
         b_join.setOnClickListener( v->{
             // TODO: some input validation here
             roomCode = et_roomCode.getText().toString();
+            userName = et_name.getText().toString();
 
-            Player player = new Player(userName, 0, false);
-            dao.addPlayer(roomCode, player);
+            // add player to room in the database
+            dao.addPlayer(roomCode, userName, false);
 
             // need to add delay so database has time to update
             final Handler handler = new Handler();
@@ -54,6 +48,7 @@ public class PlayerJoinActivity extends AppCompatActivity {
                     Intent in = new Intent(PlayerJoinActivity.this, OnlineScoreboardActivity.class);
                     in.putExtra("roomCode", roomCode);
                     in.putExtra("enteredName", userName);
+                    in.putExtra("isHost", false);
                     startActivity(in);
                 }
             }, 400);

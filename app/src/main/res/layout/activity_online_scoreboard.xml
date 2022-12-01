@@ -8,12 +8,14 @@
     tools:context=".OnlineScoreboardActivity">
 
     <TextView
-        android:id="@+id/t_hometitle3"
+        android:id="@+id/t_olscoreboardTitle"
         style="@style/h2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Scoreboard" />
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="0dp"
+        android:text="Scoreboard"
+        android:textSize="30sp" />
 
     <ListView
         android:id="@+id/lv_leaderboard"
