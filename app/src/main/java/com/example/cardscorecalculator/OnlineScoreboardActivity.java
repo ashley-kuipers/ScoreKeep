@@ -28,7 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-//TODO: Figure out timing?? seems to be messing with the scores on the database
 public class OnlineScoreboardActivity extends AppCompatActivity {
     String roomCode, userName;
     ListView scoreboard;
@@ -119,6 +118,9 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
                                         Intent in = new Intent(OnlineScoreboardActivity.this, EndGame.class);
                                         in.putExtra("scores", scoresMap);
                                         startActivity(in);
+
+                                        // delete room data from database
+                                        room.removeValue();
                                     }
                                 }
 
@@ -140,13 +142,9 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
         b_endGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // set the isPlaying value in the database to false
+                // set the isPlaying value in the database to false (triggers a "database change" and opens endGame activity through there)
                 room.child("isPlaying").setValue("false");
 
-                // open end game activity
-                Intent in = new Intent(OnlineScoreboardActivity.this, EndGame.class);
-                in.putExtra("scores", scoresMap);
-                startActivity(in);
             }
         });
 

@@ -28,7 +28,6 @@ public class DAORoom {
     public void addPlayer(String roomCode, String username, boolean isHost){
         final int[] currentScore = {0};
         // TODO: notify user that username already exists
-        // TODO: when host rejoins, it takes them off host
 
         // avoids duplicate usernames
         dbr.child(roomCode).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
