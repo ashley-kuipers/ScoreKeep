@@ -77,8 +77,8 @@ public class EndGame extends AppCompatActivity {
         b_playAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity ma = new MainActivity();
-                Intent in = new Intent(context, MainActivity.class);
+                ScoreKeepModeActivity ma = new ScoreKeepModeActivity();
+                Intent in = new Intent(context, ScoreKeepModeActivity.class);
                 startActivity(in);
             }
         });

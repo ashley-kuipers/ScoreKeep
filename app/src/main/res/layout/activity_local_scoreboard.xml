@@ -11,10 +11,10 @@
         android:id="@+id/floatingActionButton"
         style="@style/fab_transparent"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:layout_weight="1.5"
         android:clickable="false"
+        android:visibility="gone"
         app:elevation="0dp"
         app:maxImageSize="32dp"
         app:srcCompat="@drawable/ic_baseline_edit_36" />
@@ -23,90 +23,52 @@
         android:id="@+id/textView"
         style="@style/h2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
-        android:layout_weight="1.5"
         android:text="@string/scoreboardTitle" />
-
-    <TableLayout
-        android:id="@+id/local_scoreboardTableTitles"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2.75">
-
-        <TableRow
-            android:id="@+id/local_scoreTitles"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:text="@string/tableNames" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/tableCurrent" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                android:layout_weight="1"
-                android:text="@string/tableNew" />
-        </TableRow>
-
-    </TableLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TableLayout
-                android:id="@+id/local_scoreboardTable"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp" />
-
-        </LinearLayout>
-    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2.5">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/b_addscores"
-            style="@style/tertiaryButtonSmall"
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="6dp"
             android:layout_weight="1"
-            android:text="@string/b_endround"
-            android:textColor="@color/pink"
-            android:textSize="16sp" />
+            android:text="@string/tableNames" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tableCurrent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_weight="1"
+            android:text="@string/tableNew" />
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/local_scoreboardTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp">
 
         <Button
             android:id="@+id/b_endgamelocal"
@@ -114,11 +76,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:text="@string/b_endGame"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/b_addscores"
+            style="@style/primaryButtonSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_marginStart="6dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
             android:layout_weight="1"
-            android:text="@string/b_endGame"
+            android:text="@string/b_endround"
             android:textSize="16sp" />
     </LinearLayout>
 

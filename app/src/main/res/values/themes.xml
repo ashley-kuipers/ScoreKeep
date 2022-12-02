@@ -130,7 +130,7 @@
 <!--    EditTexts -->
     <style name="et" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/white</item>
-        <item name="android:backgroundTint">@color/white</item>
+<!--        <item name="android:backgroundTint">@color/white</item>-->
         <item name="android:textColorHint">#B9FFFFFF</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textAlignment">center</item>

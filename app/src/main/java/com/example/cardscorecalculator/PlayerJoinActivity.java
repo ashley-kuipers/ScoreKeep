@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,7 +39,9 @@ public class PlayerJoinActivity extends AppCompatActivity {
             userName = et_name.getText().toString();
 
             // add player to room in the database
-            dao.addPlayer(roomCode, userName, false);
+            while(!dao.addPlayer(roomCode, userName, false)){
+                Toast.makeText(getApplicationContext(),"User already exists, please choose new nickname.",Toast.LENGTH_SHORT).show();
+            }
 
             // need to add delay so database has time to update
             final Handler handler = new Handler();

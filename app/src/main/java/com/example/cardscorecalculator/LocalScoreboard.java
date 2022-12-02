@@ -1,10 +1,13 @@
 package com.example.cardscorecalculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,9 +22,11 @@ public class LocalScoreboard extends AppCompatActivity {
     ArrayList<EditText> et_scores = new ArrayList<EditText>();
     ArrayList<TextView> tv_scores = new ArrayList<TextView>();
     ArrayList<Integer> scores = new ArrayList<Integer>();
+    ArrayList<String> currentText = new ArrayList<String>();
     HashMap<Integer, String> map= new HashMap<Integer, String>();
     Context context;
     Button b_addScores, b_endGame;
+    boolean restored = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,7 @@ public class LocalScoreboard extends AppCompatActivity {
             EditText et = new EditText(context, null, 0, R.style.et_scores);
             et.setHint(R.string.et_newScore);
             et.setLayoutParams(lp);
+            et.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
             tr.addView(et);
             // add to array to retrieve inputted scores later
             et_scores.add(et);
@@ -88,6 +94,7 @@ public class LocalScoreboard extends AppCompatActivity {
 
             // Add row to layout
             tl.addView(tr);
+
         }
 
         b_addScores.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +102,6 @@ public class LocalScoreboard extends AppCompatActivity {
                 for(int i = 0; i < names.size(); i++){
                     // calculate current score and find name of each player
                     int score = Integer.parseInt(et_scores.get(i).getText().toString()) + scores.get(i);
-                    String name = names.get(i);
 
                     // save score to array
                     scores.set(i, score);
@@ -117,12 +123,55 @@ public class LocalScoreboard extends AppCompatActivity {
                 }
 
                 // start endgame activity and send hashtable
-                EndGame endGame = new EndGame();
                 Intent in = new Intent(context, EndGame.class);
                 in.putExtra("scores", map);
                 startActivity(in);
             }
         });
 
+        Log.d("TAG", "End of oncreate");
+    }
+
+    // when you turn the phone, this function is called to save any data you wish to save
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+
+        // save values in GameBoard
+        outState.putIntegerArrayList("scores", scores);
+        outState.putStringArrayList("names", names);
+
+
+        for(int i = 0; i < names.size(); i++){
+            // calculate current score and find name of each player
+            currentText.add(i, et_scores.get(i).getText().toString());
+        }
+        outState.putStringArrayList("currentText", currentText);
+        Log.d("TAG", "saved");
+        super.onSaveInstanceState(outState);
+    }
+
+    // when phone is done turning, this function is called to restore any of that data you saved
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle saved) {
+        // get values from saved state
+        scores = saved.getIntegerArrayList("scores");
+        names = saved.getStringArrayList("names");
+        currentText = saved.getStringArrayList("currentText");
+
+        for(int i = 0; i < names.size(); i++){
+            // calculate current score and find name of each player
+            int score = scores.get(i);
+
+            // save score to array
+            scores.set(i, score);
+
+            tv_scores.get(i).setText(String.valueOf(scores.get(i)));
+
+            et_scores.get(i).setText(currentText.get(i));
+        }
+
+        Log.d("TAG", "restored");
+
+        super.onRestoreInstanceState(saved);
     }
 }

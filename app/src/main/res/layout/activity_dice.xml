@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".DiceActivity">
+
+    <TextView
+        android:id="@+id/t_hometitle3"
+        style="@style/h1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="How many sides?"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_numSides"
+            style="@style/et"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="2"
+            android:autofillHints=""
+            android:background="@drawable/custom_edit_text"
+            android:ems="10"
+            android:hint="@string/e_numPlayers"
+            android:inputType="numberSigned"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textAlignment="viewStart" />
+
+        <Button
+            android:id="@+id/b_start2"
+            style="@style/secondaryButtonSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:text="Roll" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/t_teamLScore2"
+        style="@style/h1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:background="@color/pink"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:text="0"
+        android:textSize="300sp"
+        app:autoSizeMaxTextSize="300sp"
+        app:autoSizeTextType="uniform" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/primaryButtonSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back" />
+
+</LinearLayout>

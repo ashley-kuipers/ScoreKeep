@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,7 @@ public class Frag_LocalEnterPlayerNames extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_local_enter_player_names, container, false);
         context = getContext();
+
         int numPlayers;
         layout_enterNames = view.findViewById(R.id.layout_enterNames);
         b_addNames = view.findViewById(R.id.b_addNames);
@@ -47,6 +50,7 @@ public class Frag_LocalEnterPlayerNames extends Fragment {
             editText.setHint("Enter Player " + (i + 1));
             editText.setTextSize(22);
             editText.setPadding(20, 40, 20, 40);
+            editText.setInputType(InputType.TYPE_TEXT_FLAG_CAP_WORDS);
             layout_enterNames.addView(editText);
             inputs.add(editText);
         }

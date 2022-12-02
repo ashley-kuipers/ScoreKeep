@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -47,7 +48,9 @@ public class HostStartActivity extends AppCompatActivity {
             userName = et_name.getText().toString();
 
             // create a new player object and add to database
-            dao.addPlayer(roomCode, userName, true);
+            while(!dao.addPlayer(roomCode, userName, true)){
+                Toast.makeText(getApplicationContext(),"User already exists, please choose new nickname.",Toast.LENGTH_SHORT).show();
+            }
             Log.d("TAG", "HostStart: player was created");
 
             // Open score board intent

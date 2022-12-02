@@ -3,6 +3,7 @@ package com.example.cardscorecalculator;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -19,26 +20,25 @@ import java.util.Locale;
 
 public class DAORoom {
     private DatabaseReference dbr;
+    private boolean success = true;
 
     public DAORoom(){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         dbr = db.getReference("Rooms");
     }
 
-    public void addPlayer(String roomCode, String username, boolean isHost){
-        final int[] currentScore = {0};
-        // TODO: notify user that username already exists
+    public boolean addPlayer(String roomCode, String username, boolean isHost){
 
-        // avoids duplicate usernames
+        // checks that username does not already exist
         dbr.child(roomCode).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                     Log.e("TAG", "Error getting data", task.getException());
-                }
-                else {
+                } else {
                     // get list of users in the room
                     HashMap<String, String> userList = (HashMap<String, String>) task.getResult().child("user_list").getValue();
+                    Log.d("TAG", "DAO userlist " + userList);
 
                     // if the user list doesn't exist or userlist does not contain the user already, add the user to the user list array and create player object
                     if(userList == null || !userList.containsValue(username)){
@@ -57,20 +57,22 @@ public class DAORoom {
                         // set timeStamp
                         dbr.child(roomCode).child("timeStamp").setValue(getTime());
 
-                        Log.d("TAG", "DAO: isPlaying set to true");
-                    // else user already exists, so don't have to do anything but open new activity
+                        setSuccess(true);
+
+                        // else user already exists, so don't have to do anything but open new activity
                     } else {
                         Log.d("TAG", "DAO: User already exists");
-                        // TODO: notify player that user already exists?
-
-                        // set isPlaying to true TODO: not sure if this is necessary?
-//                        dbr.child(roomCode).child("isPlaying").setValue("true");
+                        setSuccess(false);
                     }
-
+                    Log.d("TAG", "DAO: Returned1 " + success);
                 }
             }
         });
 
+        // TODO: this doesn't work, always returns true because upper stuff is in its own thread
+
+        Log.d("TAG", "DAO: Returned2 " + success);
+        return success;
     }
 
     public DatabaseReference getScores(String roomCode){
@@ -87,6 +89,14 @@ public class DAORoom {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(time);
         return formatter.format(calendar.getTime());
+    }
+
+    public void setSuccess(boolean bool){
+        this.success = bool;
+    }
+
+    public boolean isSuccess() {
+        return success;
     }
 
 }

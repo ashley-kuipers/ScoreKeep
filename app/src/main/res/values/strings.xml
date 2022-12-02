@@ -1,11 +1,18 @@
 <resources>
     <string name="app_name">CardScoreCalculator</string>
-
     <!--    Home -->
-    <string name="titleHome">Card Score Calculator</string>
-    <string name="subTitleHome">How would you like to keep score?</string>
-    <string name="b_local">Local</string>
+    <string name="titleMain">Working Title</string>
+    <string name="subTitleMain">What do you need to do?</string>
+    <string name="mainButton1">Keep Score</string>
+    <string name="mainButton2">Keep Time</string>
+    <string name="mainButton3">Roll Dice</string>
+
+    <!--    ScoreKeepMode -->
+    <string name="titleHome">Score Keeper</string>
+    <string name="subTitleHome">Pick a mode</string>
+    <string name="b_local">Offline</string>
     <string name="b_online">Online</string>
+    <string name="b_sports">Head to Head</string>
 
     <!--    Local Setup -->
     <string name="titleLocalSetup">How many players do you have?</string>
@@ -19,8 +26,8 @@
     <!--    Local Scoreboard -->
     <string name="scoreboardTitle">Scores</string>
     <string name="tableNames"><u>Names</u></string>
-    <string name="tableCurrent">Current <u>Score</u></string>
-    <string name="tableNew">This <u>Round</u></string>
+    <string name="tableCurrent"><u>Current Score</u></string>
+    <string name="tableNew"><u>This Round</u></string>
     <string name="et_newScore">0</string>
     <string name="b_endround">Add Scores</string>
     <string name="b_endGame">End Game</string>
@@ -44,5 +51,9 @@
     <!--    Online Scoreboard -->
     <string name="add">+</string>
     <string name="cancel">Cancel</string>
+
+    <!--    Sports Set up -->
+    <string name="sportsSetupTitle">Sport Mode Setup</string>
+    <string name="et_sportsHint">How much does score go up each round?</string>
 
 </resources>

@@ -32,7 +32,7 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
     String roomCode, userName;
     ListView scoreboard;
     ArrayList<String> leaderboard = new ArrayList<>();
-    Button b_add, b_endGame;
+    Button b_add, b_endGame, b_leaveGame;
     int currentScore;
     LinearLayout scoreboard_buttons;
     HashMap<Integer, String> scoresMap = new HashMap<Integer, String>();
@@ -46,6 +46,7 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
 
         b_add = findViewById(R.id.b_add);
         b_endGame = findViewById(R.id.b_onlineEndGame);
+        b_leaveGame = findViewById(R.id.b_leaveGame);
         scoreboard_buttons = findViewById(R.id.scoreboard_buttons);
         t_onlineScoreboardTitle = findViewById(R.id.t_olscoreboardTitle);
 
@@ -61,6 +62,8 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
         // if the user is the host, add the "end game" button to their view
         if(isHost) {
             b_endGame.setVisibility(VISIBLE);
+        } else {
+            b_leaveGame.setVisibility(VISIBLE);
         }
 
         t_onlineScoreboardTitle.setText("Room " + roomCode + " scores");
@@ -76,11 +79,9 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.d("TAG", "beginning of handler");
                 room.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Log.d("TAG", "on Data Change");
                         // clear leaderboard because it reloads on every change
                         leaderboard.clear();
                         scoresMap.clear();
@@ -97,7 +98,6 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
                                     // get the score from the playerInfo
                                     currentScore = Integer.parseInt(String.valueOf(playerInfo.get("score")));
                                 }
-                                Log.d("TAG", "at listview");
                                 // add text to the leaderboard listview
                                 leaderboard.add(value.toUpperCase() + ": " + currentScore);
                                 adapter.notifyDataSetChanged();
@@ -110,8 +110,6 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
                                 if(allInfo != null){
                                     // check isPlaying value
                                     isPlaying = Boolean.parseBoolean(String.valueOf(allInfo.get("isPlaying")));
-
-                                    Log.d("TAG", "setting isPlaying to" + isPlaying);
 
                                     // if isPlaying is false (game has ended), open EndGame activity
                                     if (!isPlaying){
@@ -145,6 +143,21 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
                 // set the isPlaying value in the database to false (triggers a "database change" and opens endGame activity through there)
                 room.child("isPlaying").setValue("false");
 
+            }
+        });
+
+        // if the host ends the game, set isPlaying to false and open new activity
+        b_endGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // delete player from database
+                // alert asking if they really want to leave
+                // go back to main activity
+
+                // TODO: this stuff is temp
+                Intent in = new Intent(OnlineScoreboardActivity.this, EndGame.class);
+                in.putExtra("scores", scoresMap);
+                startActivity(in);
             }
         });
 
