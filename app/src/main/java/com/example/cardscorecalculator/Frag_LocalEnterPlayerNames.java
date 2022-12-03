@@ -1,9 +1,13 @@
 package com.example.cardscorecalculator;
 
+import static com.google.android.material.textfield.TextInputLayout.BOX_BACKGROUND_OUTLINE;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.InputType;
@@ -14,6 +18,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
+import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayList;
 
