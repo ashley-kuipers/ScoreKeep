@@ -55,11 +55,14 @@ public class Frag_LocalEnterPlayerNames extends Fragment {
         }
 
         for(int i=0; i < numPlayers; i++){
-            EditText editText = new EditText(context, null, 0, R.style.et);
-            editText.setHint("Enter Player " + (i + 1));
-            editText.setTextSize(22);
-            editText.setPadding(20, 40, 20, 40);
+            EditText editText = new EditText(context, null, 0, R.style.et_filled);
+            editText.setHint("Player " + (i + 1));
+            editText.setPadding(150, 25, 150, 25);
             editText.setInputType(InputType.TYPE_TEXT_FLAG_CAP_WORDS);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0, 10, 0, 30);
+            editText.setLayoutParams(lp);
+
             layout_enterNames.addView(editText);
             inputs.add(editText);
         }

@@ -15,7 +15,7 @@
         <item name="materialButtonStyle">@style/primaryButton</item>
         <item name="android:background">@color/pink</item>
         <item name="floatingActionButtonStyle">@style/fab</item>
-        <item name="editTextStyle">@style/et</item>
+        <item name="editTextStyle">@style/et_filled</item>
         <item name="android:textViewStyle">@style/h3</item>
         <item name="textAppearanceCaption">@style/etLabelTextAppearance</item>
         <item name="textAppearanceSubtitle1">@style/etSubTitleTextAppearance</item>
@@ -131,15 +131,18 @@
 <!--    EditTexts -->
     <style name="et" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/white</item>
-<!--        <item name="android:backgroundTint">@color/white</item>-->
         <item name="android:textColorHint">#B9FFFFFF</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="et_scores" parent="et">
+    <style name="et_scores" parent="et_filled">
         <item name="android:textSize">18sp</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="et_filled" parent="et">
+        <item name="android:background">@drawable/et_selector</item>
     </style>
 
     <!--    Text appearance -->

@@ -82,7 +82,11 @@ public class LocalScoreboard extends AppCompatActivity {
 
             //editText where user enters score
             EditText et = new EditText(context, null, 0, R.style.et_scores);
+            if (i % 2 == 0) {
+                et.setBackground(getResources().getDrawable(R.drawable.et_selector_opposite));
+            }
             et.setHint(R.string.et_newScore);
+            lp.setMargins(20, 20, 20, 20);
             et.setLayoutParams(lp);
             et.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
             tr.addView(et);

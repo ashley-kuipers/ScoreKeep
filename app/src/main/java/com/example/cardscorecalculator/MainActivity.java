@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         b_timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(MainActivity.this, ScoreKeepModeActivity.class);
+                Intent in = new Intent(MainActivity.this, TimerActivity.class);
                 startActivity(in);
             }
         });

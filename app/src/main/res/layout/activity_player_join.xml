@@ -7,33 +7,31 @@
     android:orientation="vertical"
     tools:context=".PlayerJoinActivity">
 
-    <EditText
-        android:id="@+id/et_name2"
-        style="@style/et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:ems="8"
-        android:hint="Enter Nickname"
-        android:inputType="textPersonName"
-        android:textSize="30sp" />
-
     <TextView
-        android:id="@+id/t_enterRoomCode2"
+        android:id="@+id/t_enterRoomCode4"
         style="@style/h2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="@string/enterRoomCode" />
+        android:text="Enter your nickname\n&#38; room code:" />
 
     <EditText
-        android:id="@+id/et_roomCode"
-        style="@style/et"
+        android:id="@+id/et_name2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:ems="8"
-        android:hint="Room Code"
+        android:hint="JaneDoe"
+        android:inputType="textPersonName"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/et_roomCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="8"
+        android:hint="WXYZ"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -41,9 +39,10 @@
 
     <Button
         android:id="@+id/b_joinRoom"
-        style="@style/secondaryButton"
+        style="@style/secondaryButtonSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
         android:text="@string/b_joinOL" />
 
 </LinearLayout>

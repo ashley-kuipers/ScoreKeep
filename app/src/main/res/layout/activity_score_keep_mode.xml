@@ -59,21 +59,21 @@
 
             <Button
                 android:id="@+id/b_local"
-                style="@style/primaryButton"
+                style="@style/primaryButtonSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/b_local" />
 
             <Button
                 android:id="@+id/b_online"
-                style="@style/secondaryButton"
+                style="@style/secondaryButtonSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/b_online" />
 
             <Button
                 android:id="@+id/b_sports"
-                style="@style/secondaryButton"
+                style="@style/secondaryButtonSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue_dark"
