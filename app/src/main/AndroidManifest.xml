@@ -110,6 +110,7 @@
                 android:value="" />
         </activity>
         <service android:name=".TimerService"></service>
+        <service android:name=".StopWatchService"></service>
     </application>
 
 </manifest>

@@ -22,51 +22,45 @@ public class TimerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        boolean timer = intent.getBooleanExtra("timer", true);
         long millis = intent.getLongExtra("millis", 0);
 
         Log.d("TAG", "service started with " + millis);
 
-        if(timer){
-            // timer
+        if(millis == 0){
+            // make toast that says they need to enter an amount
 
-            if(millis == 0){
-                // make toast that says they need to enter an amount
-            } else {
-                // run the timer
-                Log.d("TAG", "timer started");
-                ct = new CountDownTimer(millis+500, 1000) {
-                    @Override
-                    public void onTick(long l) {
-                        long hrs = l / (60 * 60 * 1000) % 24;
-                        long min = l / (60 * 1000) % 60;
-                        long sec = l / 1000 % 60;
-
-                        Log.d("TAG", "time tick hr: " + hrs + " min: " + min + " sec: " + sec);
-
-                        Intent in = new Intent("timerTick");
-                        in.putExtra("hrs", hrs);
-                        in.putExtra("min", min);
-                        in.putExtra("sec", sec);
-                        sendBroadcast(in);
-
-                        timeLeft = l;
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        // TODO: send push notification
-                        Intent in = new Intent("timerEnd");
-                        in.putExtra("finishEarly", false);
-                        sendBroadcast(in);
-                        finished = true;
-
-                    }
-                };
-                ct.start();
-            }
         } else {
-            // stopwatch
+            // run the timer
+            Log.d("TAG", "timer started");
+            ct = new CountDownTimer(millis+500, 1000) {
+                @Override
+                public void onTick(long l) {
+                    long hrs = l / (60 * 60 * 1000) % 24;
+                    long min = l / (60 * 1000) % 60;
+                    long sec = l / 1000 % 60;
+
+                    Log.d("TAG", "time tick hr: " + hrs + " min: " + min + " sec: " + sec);
+
+                    Intent in = new Intent("timerTick");
+                    in.putExtra("hrs", hrs);
+                    in.putExtra("min", min);
+                    in.putExtra("sec", sec);
+                    sendBroadcast(in);
+
+                    timeLeft = l;
+                }
+
+                @Override
+                public void onFinish() {
+                    // TODO: send push notification
+                    Intent in = new Intent("timerEnd");
+                    in.putExtra("finishEarly", false);
+                    sendBroadcast(in);
+                    finished = true;
+
+                }
+            };
+            ct.start();
         }
 
         return super.onStartCommand(intent, flags, startId);

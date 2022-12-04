@@ -50,6 +50,7 @@
                 android:text="Stopwatch" />
 
         </com.google.android.material.tabs.TabLayout>
+
     </androidx.viewpager.widget.ViewPager>
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -144,7 +145,6 @@ public class TimerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), TimerService.class);
-                i.putExtra("timer", true);
                 i.putExtra("millis", getTimeInMillis(hour, min, sec));
                 getActivity().startService(i);
 
@@ -160,7 +160,6 @@ public class TimerFragment extends Fragment {
 
                 b_start.setVisibility(View.GONE);
                 b_stop.setVisibility(View.VISIBLE);
-                b_reset.setVisibility(View.GONE);
 
                 timerIsRunning = true;
 
@@ -172,7 +171,6 @@ public class TimerFragment extends Fragment {
             public void onClick(View view) {
                 b_start.setVisibility(View.VISIBLE);
                 b_stop.setVisibility(View.GONE);
-                b_reset.setVisibility(View.VISIBLE);
 
                 timerIsRunning = false;
 
@@ -185,12 +183,23 @@ public class TimerFragment extends Fragment {
         b_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                hour = 0;
-                min = 0;
-                sec = 0;
-                setHr(hour);
-                setMin(min);
-                setSec(sec);
+                if(timerIsRunning){
+                    b_stop.performClick();
+                }
+                // have to delay so gives time for the service to stop
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        hour = 0;
+                        min = 0;
+                        sec = 0;
+                        setHr(hour);
+                        setMin(min);
+                        setSec(sec);
+                    }
+                }, 200);
+
             }
         });
 
@@ -248,8 +257,6 @@ public class TimerFragment extends Fragment {
             setHr(hour);
             setMin(min);
             setSec(sec);
-
-
 
             // make all buttons clickable
             b_addHour.setEnabled(true);

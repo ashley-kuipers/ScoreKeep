@@ -18,10 +18,16 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:orientation="vertical">
 
             <LinearLayout
@@ -33,7 +39,7 @@
                 android:padding="0dp">
 
                 <TextView
-                    android:id="@+id/t_Timerhours"
+                    android:id="@+id/t_StopWatchhours"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center"
@@ -56,7 +62,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:orientation="vertical">
 
             <LinearLayout
@@ -68,7 +74,7 @@
                 android:padding="0dp">
 
                 <TextView
-                    android:id="@+id/t_timerMins"
+                    android:id="@+id/t_stopWatchMins"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center"
@@ -91,7 +97,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:orientation="vertical">
 
             <LinearLayout
@@ -106,11 +112,11 @@
                 android:paddingBottom="0dp">
 
                 <TextView
-                    android:id="@+id/t_timerSecs"
+                    android:id="@+id/t_stopWatchSecs"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center"
-                    android:text="00"
+                    android:text="00.0"
                     android:textSize="30sp"
                     app:autoSizeMaxTextSize="30sp"
                     app:autoSizeTextType="uniform" />
@@ -126,6 +132,11 @@
 
         </LinearLayout>
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -135,19 +146,68 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/b_resetStopwatch"
             style="@style/secondaryButtonSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:layout_marginEnd="12dp"
+            android:layout_weight="1"
             android:text="Reset" />
 
         <Button
-            android:id="@+id/b_stopTimer"
+            android:id="@+id/b_startStopwatch"
             style="@style/primaryButtonSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:layout_marginEnd="50dp"
+            android:layout_weight="1"
             android:text="start" />
+
+        <Button
+            android:id="@+id/b_stopStopwatch"
+            style="@style/secondaryButtonSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/orange_dark"
+            android:text="Stop"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/b_pauseStopwatch"
+            style="@style/secondaryButtonSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_dark"
+            android:text="Stop"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pink_dark"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/b_stopWatchBack"
+                style="@style/primaryButtonSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="16dp"
+                android:text="Back" />
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
