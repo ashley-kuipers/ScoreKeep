@@ -8,36 +8,29 @@
     android:padding="16dp"
     tools:context=".DiceActivity">
 
+    <TextView
+        android:id="@+id/t_roomCodeTitle3"
+        style="@style/h2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="How many sides?" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filledTextField"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="# of sides"
-            android:textColorHint="@color/white"
-            app:boxBackgroundColor="@color/pink_light"
-            app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/transparent"
-            app:boxStrokeWidth="0dp">
-
-            <!--this is the actual edit text which takes the input-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:inputType="numberSigned"
-                android:textColor="@color/white" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:hint="Enter Number"
+            android:inputType="numberSigned"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/b_rollDice"
@@ -46,7 +39,6 @@
             android:layout_height="match_parent"
             android:layout_marginStart="20dp"
             android:layout_weight="1"
-            android:insetBottom="0dp"
             android:text="Roll" />
     </LinearLayout>
 

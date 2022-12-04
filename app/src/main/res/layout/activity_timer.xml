@@ -2,19 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_timer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="bottom"
     android:orientation="vertical"
-    android:padding="12dp"
     tools:context=".TimerActivity">
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        style="@style/et_filled"
+    <TextView
+        android:id="@+id/t_roomCodeTitle2"
+        style="@style/h2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="score"
-        android:inputType="textPersonName"
-        />
+        android:layout_marginBottom="0dp"
+        android:background="@color/pink_dark"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp"
+        android:text="Which mode?" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            style="@style/Widget.MaterialComponents.TabLayout.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@drawable/tabs_selector"
+            app:tabIndicatorColor="@color/pink"
+            app:tabIndicatorGravity="bottom"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/pink_light">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:text="Timer" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:text="Stopwatch" />
+
+        </com.google.android.material.tabs.TabLayout>
+    </androidx.viewpager.widget.ViewPager>
+
 </LinearLayout>

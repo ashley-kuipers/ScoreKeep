@@ -12,13 +12,16 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/pink_dark</item>
         <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/pink_dark</item>
+        <item name="colorSurface">@color/pink_dark</item>
+        <item name="colorOnSurface">@color/pink_light</item>
+
         <item name="materialButtonStyle">@style/primaryButton</item>
-        <item name="android:background">@color/pink</item>
         <item name="floatingActionButtonStyle">@style/fab</item>
         <item name="editTextStyle">@style/et_filled</item>
         <item name="android:textViewStyle">@style/h3</item>
-        <item name="textAppearanceCaption">@style/etLabelTextAppearance</item>
-        <item name="textAppearanceSubtitle1">@style/etSubTitleTextAppearance</item>
+        <item name="textAppearanceButton">@style/tabsAppearance</item>
+        <item name="android:windowBackground">@color/pink</item>
     </style>
 
 <!--    Buttons-->
@@ -129,39 +132,29 @@
     </style>
 
 <!--    EditTexts -->
-    <style name="et" parent="Widget.AppCompat.EditText">
+    <style name="et_filled" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">#B9FFFFFF</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/et_selector</item>
     </style>
 
     <style name="et_scores" parent="et_filled">
         <item name="android:textSize">18sp</item>
-        <item name="android:textAlignment">center</item>
-    </style>
-
-    <style name="et_filled" parent="et">
-        <item name="android:background">@drawable/et_selector</item>
     </style>
 
     <!--    Text appearance -->
-    <style name="etLabelTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="android:textSize">14sp</item>
-        <item name="fontFamily">sans-serif</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textStyle">normal</item>
+    <style name="tabsAppearance" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/white</item>
+        <item name="textBackground">@color/transparent</item>
     </style>
 
-    <style name="etSubTitleTextAppearance" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="textAllCaps">true</item>
-        <item name="android:letterSpacing">0.05</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
+    <style name="tab_widget" parent="@android:style/Widget.DeviceDefault.Light.TabWidget">
+        <item name="android:textSize">12sp</item>
     </style>
 
 </resources>

@@ -55,5 +55,7 @@
     <!--    Sports Set up -->
     <string name="sportsSetupTitle">Sport Mode Setup</string>
     <string name="et_sportsHint">How much does score go up each round?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
