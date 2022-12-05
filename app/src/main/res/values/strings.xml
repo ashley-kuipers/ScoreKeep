@@ -32,9 +32,9 @@
     <string name="b_endround">Add Scores</string>
     <string name="b_endGame">End Game</string>
 
-    <!--    Local End Game-->
+    <!--    End Game-->
     <string name="endGameTitle">The results are in...</string>
-    <string name="b_playAgain">Play Again</string>
+    <string name="b_playAgain">New Game</string>
     <string name="winner"><u>WINNER</u></string>
 
     <!--    Online Setup-->
@@ -55,7 +55,29 @@
     <!--    Sports Set up -->
     <string name="sportsSetupTitle">Sport Mode Setup</string>
     <string name="et_sportsHint">How much does score go up each round?</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Help -->
+    <string name="offlineDescription">In this mode\, only one player is required to have the app on their device. The player \(host\) enters the players names and creates a gameboard. During gameplay, the host enters everyone\'s scores at the end of every round. The app keeps track and calculates the scores and displays the winner when the game is ended.</string>
+    <string name="onlineDescription">In this mode\, all players are required to have the app on their device and maintain an internet connection. One player will host the game which creates a \"room\" with a room code that they must distribute to the rest of the players. The rest of the players join the \"room\" by entering the room code.  During gameplay\, each player enters their own score on their device at the end of every round. The scoreboard is updated on each player\'s device  in real time. </string>
+    <string name="head2headDescription">This mode is limited to landscape only. It is meant to keep score for two players or teams playing against eachother. In this mode, the two players/teams names are entered, as well as some other set up information. The scoreboard contains buttons to increase or decrease each teams score. The screen is split into two\, with each player\/teams score displayed on each side of the screen in large numbers. </string>
+    <string name="timerDescription">The player can use the buttons to select an amount of time. Once the player presses start, the timer starts to count down.  The timer will continue even if the player leaves the page and comes back to it. </string>
+    <string name="stopWatchDescription">In this mode\, once the player presses the start button, the app keeps track of the time elapsed to the 10th of a second. </string>
+    <string name="diceDescription">In this mode\, the player chooses how many sides the \"dice\" will have. The default is 6. The player can press \"roll\" to get a number. </string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 </resources>

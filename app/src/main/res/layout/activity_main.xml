@@ -67,12 +67,12 @@
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_corners_button"
-                app:srcCompat="@drawable/chat" />
+                app:srcCompat="@drawable/feedback" />
 
             <ImageButton
                 android:id="@+id/b_help"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="6dp"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
@@ -82,7 +82,7 @@
             <ImageButton
                 android:id="@+id/b_settings"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="6dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_corners_button"

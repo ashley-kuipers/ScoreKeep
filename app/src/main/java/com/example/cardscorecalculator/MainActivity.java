@@ -3,6 +3,7 @@ package com.example.cardscorecalculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: create time activity
         b_timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: create dice activity
         b_dice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,25 +49,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: create google form to submit bugs
         b_chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(MainActivity.this, ScoreKeepModeActivity.class);
-                startActivity(in);
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSfRnSjD8cKusjZDtrJ1xJ1KVXtUtbndSewzRfz63HLrFsaB9A/viewform?usp=sf_link"));
+                startActivity(intent);
             }
         });
 
-        // TODO: create google form to submit bugs
+        // TODO: create help page
         b_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(MainActivity.this, ScoreKeepModeActivity.class);
+                Intent in = new Intent(MainActivity.this, HelpActivity.class);
                 startActivity(in);
             }
         });
 
-        // TODO: create google form to submit bugs
+        // TODO: create settings page
         b_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

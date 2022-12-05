@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".HelpActivity">
+
+    <TextView
+        android:id="@+id/textView8"
+        style="@style/h2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Help" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="What do the modes do?"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                style="@style/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="ScoreKeeping"
+                android:textAlignment="viewStart"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                style="@style/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="Offline"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView11"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/offlineDescription"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                style="@style/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="Online"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/head2headDescription"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView17"
+                style="@style/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="Head to Head"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/onlineDescription"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView19"
+                style="@style/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="Time Keeping"
+                android:textAlignment="viewStart"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView20"
+                style="@style/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="Timer"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView21"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/timerDescription"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView22"
+                style="@style/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="Stop Watch"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/stopWatchDescription"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <TextView
+                style="@style/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="Dice Rolling"
+                android:textAlignment="viewStart"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView26"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/diceDescription"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/b_backHelp"
+                style="@style/primaryButtonSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Back" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
