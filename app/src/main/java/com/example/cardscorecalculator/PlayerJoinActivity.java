@@ -16,7 +16,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 public class PlayerJoinActivity extends AppCompatActivity {
     Button b_join;
-    EditText et_roomCode, et_name;
+    EditText et_room, et_name;
     String userName, roomCode;
     MaterialToolbar topAppBar;
 
@@ -25,9 +25,10 @@ public class PlayerJoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_join);
 
+        // connect vars to views
         b_join = findViewById(R.id.b_joinRoom);
-        et_roomCode = findViewById(R.id.et_roomCodePlayerJoin);
-        et_name = findViewById(R.id.et_namePlayerJoin);
+        et_room = findViewById(R.id.et_room_code_player_join);
+        et_name = findViewById(R.id.et_player_join);
         topAppBar = findViewById(R.id.topAppBarPlayerJoin);
 
         // sets the app bar back button function
@@ -43,14 +44,11 @@ public class PlayerJoinActivity extends AppCompatActivity {
 
         // player
         b_join.setOnClickListener( v->{
-            // TODO: some input validation here
-            roomCode = et_roomCode.getText().toString();
+            roomCode = et_room.getText().toString();
             userName = et_name.getText().toString();
 
             // add player to room in the database
-            while(!dao.addPlayer(roomCode, userName, false)){
-                Toast.makeText(getApplicationContext(),"User already exists, please choose new nickname.",Toast.LENGTH_SHORT).show();
-            }
+            dao.addPlayer(roomCode, userName, false);
 
             // need to add delay so database has time to update
             final Handler handler = new Handler();
@@ -72,25 +70,23 @@ public class PlayerJoinActivity extends AppCompatActivity {
     // when you turn the phone, this function is called to save any data you wish to save
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        // save data
-        outState.putString("currentRoomCode", et_roomCode.getText().toString());
-        outState.putString("currentName", et_name.getText().toString());
-
-        Log.d("TAG", "room code enter " + et_roomCode.getText().toString());
         super.onSaveInstanceState(outState);
+        // save data
+        Log.d("TAG", "saved room code " + et_room.getText().toString());
+        outState.putString("currentRoomCode", et_room.getText().toString());
+        outState.putString("currentName", et_name.getText().toString());
     }
 
     // when phone is done turning, this function is called to restore any of that data you saved
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle saved) {
-        // get values from saved state
-        Log.d("TAG", saved.getString("currentRoomCode"));
-        String code = saved.getString("currentRoomCode");
-        String name = saved.getString("currentName");
-
-        et_roomCode.setText(code);
-        et_name.setText(name);
-
         super.onRestoreInstanceState(saved);
+
+        Log.d("TAG", "retrieved " + saved.getString("currentRoomCode"));
+        et_room.setText(saved.getString("currentRoomCode"));
+        et_name.setText(saved.getString("currentName"));
+        Log.d("TAG", "retrieved");
+
     }
+
 }

@@ -187,11 +187,10 @@
 
             <Button
                 android:id="@+id/b_resetTimer"
-                style="@style/secondaryButtonSmall"
+                style="@style/tertiaryButtonSmall"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/blue_dark"
                 android:insetTop="0dp"
                 android:text="@string/b_reset" />
 

@@ -55,7 +55,7 @@ public class DAORoom {
 
                         setSuccess(true);
 
-                        // else user already exists, so don't have to do anything but open new activity
+                    // else user already exists, so don't have to do anything but open new activity
                     } else {
                         Log.d("TAG", "DAO: User already exists");
                         setSuccess(false);

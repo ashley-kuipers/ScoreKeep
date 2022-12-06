@@ -13,13 +13,12 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBarLocalScoreboard"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/pink_dark"
             app:menu="@menu/top_app_bar"
             app:title="@string/localScoreboardTitle"
-            app:titleCentered="true" />
+            app:titleCentered="true"
+            app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
