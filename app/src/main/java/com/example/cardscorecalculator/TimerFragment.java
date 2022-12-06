@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -18,8 +19,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 public class TimerFragment extends Fragment {
-    Button b_start, b_stop, b_reset, b_back;
+    Button b_start, b_stop, b_reset;
     ImageButton b_addHour, b_addMin, b_addSec, b_subHour, b_subMin, b_subSec;
     TextView t_hour, t_min, t_sec;
     long hour=0, min=0, sec=0;
@@ -30,38 +33,49 @@ public class TimerFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_timer, container, false);
 
+        // connect vars to views
         b_addHour = v.findViewById(R.id.b_addHours);
         b_subHour = v.findViewById(R.id.b_subHours);
         b_addMin = v.findViewById(R.id.b_addMins);
         b_subMin = v.findViewById(R.id.b_subMins);
         b_addSec = v.findViewById(R.id.b_addSec);
         b_subSec = v.findViewById(R.id.b_subSecs);
-
         b_start = v.findViewById(R.id.b_startTimer);
         b_stop = v.findViewById(R.id.b_stopTimer);
         b_reset = v.findViewById(R.id.b_resetTimer);
-        b_back = v.findViewById(R.id.b_timerBack);
-
-        if(timerIsRunning){
-            b_start.setVisibility(View.GONE);
-            b_stop.setVisibility(View.VISIBLE);
-        } else {
-            b_start.setVisibility(View.VISIBLE);
-            b_stop.setVisibility(View.GONE);
-        }
-
         t_hour = v.findViewById(R.id.t_Timerhours);
         t_min = v.findViewById(R.id.t_timerMins);
         t_sec = v.findViewById(R.id.t_timerSecs);
 
-        // starts a new receiver to wait for broadcast from the service
+        // sets visibility/clickability of buttons based on if the timer is running
+        if(timerIsRunning){
+            b_start.setVisibility(View.GONE);
+            b_stop.setVisibility(View.VISIBLE);
+            b_addHour.setEnabled(false);
+            b_subHour.setEnabled(false);
+            b_addMin.setEnabled(false);
+            b_subMin.setEnabled(false);
+            b_addSec.setEnabled(false);
+            b_subSec.setEnabled(false);
+        } else {
+            b_start.setVisibility(View.VISIBLE);
+            b_stop.setVisibility(View.GONE);
+            b_addHour.setEnabled(true);
+            b_subHour.setEnabled(true);
+            b_addMin.setEnabled(true);
+            b_subMin.setEnabled(true);
+            b_addSec.setEnabled(true);
+            b_subSec.setEnabled(true);
+        }
+
+        // register time receivers (broadcast from TimerService)
         requireActivity().registerReceiver(timerTick, new IntentFilter("timerTick"));
         requireActivity().registerReceiver(timerEnd, new IntentFilter("timerEnd"));
 
+        // adds an hour to the timer
         b_addHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +89,7 @@ public class TimerFragment extends Fragment {
             }
         });
 
+        // subtracts an hour from the timer
         b_subHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +103,7 @@ public class TimerFragment extends Fragment {
             }
         });
 
+        // adds a minute to the timer
         b_addMin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,6 +117,7 @@ public class TimerFragment extends Fragment {
             }
         });
 
+        // subtracts a minute from the timer
         b_subMin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +131,7 @@ public class TimerFragment extends Fragment {
             }
         });
 
-
+        // adds a second to the timer
         b_addSec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,6 +145,7 @@ public class TimerFragment extends Fragment {
             }
         });
 
+        // subtracts a second from the timer
         b_subSec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,23 +159,22 @@ public class TimerFragment extends Fragment {
             }
         });
 
+        // starts the timer
         b_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // starts TimerService (allows timer to run in background)
                 Intent i = new Intent(getActivity(), TimerService.class);
                 i.putExtra("millis", getTimeInMillis(hour, min, sec));
                 getActivity().startService(i);
 
-                // make all buttons invisible
+                // make all add/sub buttons unclickable and switches out start and stop button
                 b_addHour.setEnabled(false);
                 b_subHour.setEnabled(false);
                 b_addMin.setEnabled(false);
                 b_subMin.setEnabled(false);
                 b_addSec.setEnabled(false);
                 b_subSec.setEnabled(false);
-
-                Log.d("TAG", "start pressed");
-
                 b_start.setVisibility(View.GONE);
                 b_stop.setVisibility(View.VISIBLE);
 
@@ -169,24 +186,34 @@ public class TimerFragment extends Fragment {
         b_stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                b_start.setVisibility(View.VISIBLE);
-                b_stop.setVisibility(View.GONE);
-
-                timerIsRunning = false;
-
+                // stops the timer service
                 Intent i = new Intent(getActivity(), TimerService.class);
                 getActivity().stopService(i);
 
+                // make all add/sub buttons clickable and switches out start and stop button
+                b_start.setVisibility(View.VISIBLE);
+                b_stop.setVisibility(View.GONE);
+                b_addHour.setEnabled(true);
+                b_subHour.setEnabled(true);
+                b_addMin.setEnabled(true);
+                b_subMin.setEnabled(true);
+                b_addSec.setEnabled(true);
+                b_subSec.setEnabled(true);
+
+                timerIsRunning = false;
             }
         });
 
         b_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // if the timer is currently running, performs all the functions of the stop button
                 if(timerIsRunning){
                     b_stop.performClick();
                 }
-                // have to delay so gives time for the service to stop
+
+                // sets the timer to 0
+                // have to delay because it takes time for the service to stop
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -203,24 +230,18 @@ public class TimerFragment extends Fragment {
             }
         });
 
-        b_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in = new Intent(getActivity(), MainActivity.class);
-                startActivity(in);
-            }
-        });
+        // retrieve data from the instance state if it exists
+        if (savedInstanceState != null) {
+            t_hour.setText(savedInstanceState.getString("currentHour"));
+            t_min.setText(savedInstanceState.getString("currentMin"));
+            t_sec.setText(savedInstanceState.getString("currentSec"));
+        }
 
         // Inflate the layout for this fragment
         return v;
     }
 
-    public long getTimeInMillis(long hour, long min, long sec){
-        long totalSecs = (hour * 3600) + (min * 60) + sec;
-        long millis = totalSecs * 1000;
 
-        return millis;
-    }
 
     BroadcastReceiver timerTick = new BroadcastReceiver() {
         @Override
@@ -272,10 +293,10 @@ public class TimerFragment extends Fragment {
 
             timerIsRunning = false;
 
-
         }
     };
 
+    // converts the provided long to String and puts in the hours field
     public void setHr(long hr2){
         String strHour = String.valueOf(hr2);
         if(strHour.length()<2){
@@ -285,6 +306,7 @@ public class TimerFragment extends Fragment {
         t_hour.setText(strHour);
     }
 
+    // converts the provided long to String and puts in the min field
     public void setMin(long min2){
         String strMin = String.valueOf(min2);
         if(strMin.length()<2){
@@ -294,6 +316,7 @@ public class TimerFragment extends Fragment {
         t_min.setText(strMin);
     }
 
+    // converts the provided long to String and puts in the sec field
     public void setSec(long sec2){
         String strSec = String.valueOf(sec2);
         if(strSec.length()<2){
@@ -303,10 +326,31 @@ public class TimerFragment extends Fragment {
         t_sec.setText(strSec);
     }
 
+    // converts the provided time to milliseconds
+    private long getTimeInMillis(long hour, long min, long sec){
+        long totalSecs = (hour * 3600) + (min * 60) + sec;
+        long millis = totalSecs * 1000;
+        return millis;
+    }
+
+    // unregisters receivers when fragment is destroyed
     @Override
     public void onDestroy() {
         super.onDestroy();
         getActivity().unregisterReceiver(timerTick);
         getActivity().unregisterReceiver(timerEnd);
     }
+
+    // only required to save data when timer hasn't started yet, otherwise service will update screen automatically
+    // when you turn the phone, this function is called to save any data you wish to save
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // save data
+        outState.putString("currentHour", t_hour.getText().toString());
+        outState.putString("currentMin", t_min.getText().toString());
+        outState.putString("currentSec", t_sec.getText().toString());
+    }
+
 }

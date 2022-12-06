@@ -1,30 +1,32 @@
 <resources>
-    <string name="app_name">CardScoreCalculator</string>
+    <string name="app_name">ScoreKeep</string>
+
     <!--    Home -->
-    <string name="titleMain">Working Title</string>
     <string name="subTitleMain">What do you need to do?</string>
     <string name="mainButton1">Keep Score</string>
     <string name="mainButton2">Keep Time</string>
     <string name="mainButton3">Roll Dice</string>
 
     <!--    ScoreKeepMode -->
-    <string name="titleHome">Score Keeper</string>
-    <string name="subTitleHome">Pick a mode</string>
+    <string name="subTitleScoreMode">Score Mode</string>
+    <string name="subsubTitleScoreMode">How would you like to keep score?</string>
     <string name="b_local">Offline</string>
     <string name="b_online">Online</string>
     <string name="b_sports">Head to Head</string>
 
     <!--    Local Setup -->
-    <string name="titleLocalSetup">How many players do you have?</string>
+    <string name="subTitleLocalSetup">How many players do you have?</string>
     <string name="e_numPlayers">Enter Number</string>
-    <string name="b_start">OK</string>
+    <string name="b_okay">OK</string>
+    <string name="titleLocalSetup">Setup</string>
 
     <!--    Local Setup Fragment -->
     <string name="b_numPlayers">Done</string>
     <string name="ethint_enterName">Enter Name</string>
+    <string name="localSetupTitle">What are their names?</string>
 
     <!--    Local Scoreboard -->
-    <string name="scoreboardTitle">Scores</string>
+    <string name="localScoreboardTitle">Scoreboard</string>
     <string name="tableNames"><u>Names</u></string>
     <string name="tableCurrent"><u>Current Score</u></string>
     <string name="tableNew"><u>This Round</u></string>
@@ -33,28 +35,63 @@
     <string name="b_endGame">End Game</string>
 
     <!--    End Game-->
-    <string name="endGameTitle">The results are in...</string>
+    <string name="endGameTitle">The results\nare in...</string>
+    <string name="endGameTitleLandscape">The results are in...</string>
     <string name="b_playAgain">New Game</string>
     <string name="winner"><u>WINNER</u></string>
 
     <!--    Online Setup-->
-    <string name="b_startOL">Host Game</string>
+    <string name="b_hostGame">Host Game</string>
     <string name="b_joinOL">Join Game</string>
+    <string name="onlineSetupTitle">Online Setup</string>
+    <string name="onlineSetupSubTitle">Choose an option:</string>
 
     <!--    Online Host Start-->
-    <string name="roomCodeTitle">Share this room code with the other players:</string>
+    <string name="shareCodeTitle">Share this room code with the other players:</string>
+    <string name="et_hostStart">Enter Nickname</string>
+    <string name="b_openRoom">Open Room</string>
+    <string name="hostStartTitle">Host Setup</string>
 
-    <!--    Online Player Start-->
-    <string name="enterRoomCode">Get the Room code from your host:</string>
-    <string name="ethint_roomCode">WXYZ</string>
+    <!--    Online Player Join-->
+    <string name="playerJoinTitle">Join a Game</string>
+    <string name="playerJoinSubTitle">Enter your nickname\n&#38; room code:</string>
+    <string name="et_nicknameHint">JaneDoe</string>
+    <string name="et_roomCodeHint">WXYZ</string>
 
     <!--    Online Scoreboard -->
-    <string name="add">+</string>
+    <string name="add">add</string>
     <string name="cancel">Cancel</string>
+    <string name="onlineScoreboardTitle">Scoreboard</string>
 
     <!--    Sports Set up -->
     <string name="sportsSetupTitle">Sport Mode Setup</string>
-    <string name="et_sportsHint">How much does score go up each round?</string>
+    <string name="b_startGame">Start Game</string>
+    <string name="et_sportsHint">How much does score go up by?</string>
+    <string name="et_leftTeam">Left Team Name</string>
+    <string name="et_rightGame">Right Team Name</string>
+    <string name="et_winCond">Points needed to win? (optional)</string>
+
+    <!--    Sports Mode -->
+    <string name="team">Team</string>
+
+    <!--    Dice Roll -->
+    <string name="diceTitle">Roll a Dice</string>
+    <string name="et_numSides">Number of Sides</string>
+    <string name="b_roll">Roll</string>
+
+    <!--    Timer Choose Activity -->
+    <string name="timeActivityTitle">Time Keeping Mode</string>
+    <string name="timerTab">Timer</string>
+    <string name="stopWatchTab">Stopwatch</string>
+
+    <!--    Timer/Stopwatch Fragments -->
+    <string name="hour">hrs</string>
+    <string name="min">min</string>
+    <string name="sec">sec</string>
+    <string name="b_reset">reset</string>
+    <string name="b_start">start</string>
+    <string name="b_stop">stop</string>
+
 
     <!--    Help -->
     <string name="offlineDescription">In this mode\, only one player is required to have the app on their device. The player \(host\) enters the players names and creates a gameboard. During gameplay, the host enters everyone\'s scores at the end of every round. The app keeps track and calculates the scores and displays the winner when the game is ended.</string>
@@ -63,6 +100,18 @@
     <string name="timerDescription">The player can use the buttons to select an amount of time. Once the player presses start, the timer starts to count down.  The timer will continue even if the player leaves the page and comes back to it. </string>
     <string name="stopWatchDescription">In this mode\, once the player presses the start button, the app keeps track of the time elapsed to the 10th of a second. </string>
     <string name="diceDescription">In this mode\, the player chooses how many sides the \"dice\" will have. The default is 6. The player can press \"roll\" to get a number. </string>
+    <string name="helpTitle">Help</string>
+    <string name="helpSubTitle">What do the modes do?</string>
+    <string name="helpHeading1">Score-keeping</string>
+    <string name="helpHeading2">Offline</string>
+    <string name="helpHeading3">Online</string>
+    <string name="helpHeading4">Head to Head</string>
+    <string name="helpHeading5">Time-keeping</string>
+    <string name="helpHeading6">Timer</string>
+    <string name="helpHeading7">Stopwatch</string>
+    <string name="helpHeading8">Rolling Dice</string>
+
+
     <string name="title_activity_settings">SettingsActivity</string>
 
     <!-- Preference Titles -->
@@ -79,5 +128,7 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+
 
 </resources>

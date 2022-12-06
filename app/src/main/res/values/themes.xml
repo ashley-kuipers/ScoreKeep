@@ -22,6 +22,7 @@
         <item name="android:textViewStyle">@style/h3</item>
         <item name="textAppearanceButton">@style/tabsAppearance</item>
         <item name="android:windowBackground">@color/pink</item>
+
     </style>
 
 <!--    Buttons-->
@@ -155,6 +156,12 @@
 
     <style name="tab_widget" parent="@android:style/Widget.DeviceDefault.Light.TabWidget">
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <!--   AlertSportWinner -->
+    <style name="dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/pink</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>

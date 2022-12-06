@@ -1,37 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center|top"
     android:orientation="vertical"
     tools:context=".PlayerJoinActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarPlayerJoin"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/pink_dark"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_30"
+            app:title="@string/playerJoinTitle"
+            app:titleCentered="true" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/t_enterRoomCode4"
         style="@style/h2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Enter your nickname\n&#38; room code:" />
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/playerJoinSubTitle" />
 
     <EditText
-        android:id="@+id/et_name2"
+        android:id="@+id/et_namePlayerJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:ems="8"
-        android:hint="JaneDoe"
-        android:inputType="textPersonName"
+        android:hint="@string/et_nicknameHint"
+        android:inputType="textCapWords"
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/et_roomCode"
+        android:id="@+id/et_roomCodePlayerJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:ems="8"
-        android:hint="WXYZ"
+        android:hint="@string/et_roomCodeHint"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textAllCaps="true"

@@ -12,9 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="hrs"
+                    android:text="@string/hour"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -88,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="min"
+                    android:text="@string/min"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -126,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="sec"
+                    android:text="@string/sec"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -151,19 +151,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="Reset" />
+            android:text="@string/b_reset" />
 
         <Button
             android:id="@+id/b_startStopwatch"
             style="@style/primaryButtonSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="50dp"
             android:layout_weight="1"
-            android:text="start" />
+            android:text="@string/b_start" />
 
         <Button
             android:id="@+id/b_stopStopwatch"
@@ -177,37 +177,6 @@
             android:text="Stop"
             android:visibility="gone" />
 
-        <Button
-            android:id="@+id/b_pauseStopwatch"
-            style="@style/secondaryButtonSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue_dark"
-            android:text="Stop"
-            android:visibility="gone" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/pink_dark"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/b_stopWatchBack"
-                style="@style/primaryButtonSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_margin="16dp"
-                android:text="Back" />
-        </LinearLayout>
-
-    </LinearLayout>
 </LinearLayout>

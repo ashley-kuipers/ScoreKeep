@@ -4,19 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center|top"
     android:orientation="vertical"
     tools:context=".HostStartActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarHostStart"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/pink_dark"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_30"
+            app:title="@string/hostStartTitle"
+            app:titleCentered="true" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <EditText
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
-        android:hint="Enter Nickname"
+        android:hint="@string/et_hostStart"
         android:inputType="textPersonName"
         android:textSize="30sp" />
 
@@ -28,7 +46,7 @@
         android:layout_marginBottom="12dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:text="@string/roomCodeTitle" />
+        android:text="@string/shareCodeTitle" />
 
     <TextView
         android:id="@+id/t_roomCode"
@@ -42,5 +60,5 @@
         android:id="@+id/b_openRoom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open Room" />
+        android:text="@string/b_openRoom" />
 </LinearLayout>

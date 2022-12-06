@@ -5,39 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center|top"
-    android:orientation="vertical"
     android:padding="30dp"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginBottom="10dp"
-        android:maxHeight="100dp"
-        android:minHeight="100dp"
-        app:srcCompat="@drawable/scorecard_icon" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/t_hometitle2"
-        style="@style/h1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/app_name"
-        android:textSize="40sp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="10dp"
+            android:maxHeight="100dp"
+            android:minHeight="100dp"
+            app:srcCompat="@drawable/scorecard_icon" />
 
-    <TextView
-        android:id="@+id/t_hometitle3"
-        style="@style/h3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/subTitleMain" />
+        <TextView
+            android:id="@+id/t_hometitle2"
+            style="@style/h1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/app_name"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/t_hometitle3"
+            style="@style/h3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/subTitleMain" />
+    </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="vertical">
 
         <Button

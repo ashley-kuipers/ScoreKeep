@@ -6,10 +6,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
+    // creates a view pager adapter for the tabbed layout in the Timer/Stopwatch activity
     public ViewPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
+    // gets each fragment
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -22,14 +24,15 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
+    // gets the number of tabs
     @Override
     public int getCount() {
         return 2;
     }
 
+    // returns the page title for the tab title
     @Override
-    public CharSequence getPageTitle(int position)
-    {
+    public CharSequence getPageTitle(int position) {
         String title = null;
         if (position == 0)
             title = "Timer";

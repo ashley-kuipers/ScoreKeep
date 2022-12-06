@@ -1,14 +1,18 @@
 package com.example.cardscorecalculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,15 +26,27 @@ public class HostStartActivity extends AppCompatActivity {
     Button b_openRoom;
     TextView t_roomCode;
     EditText et_name;
+    MaterialToolbar topAppBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_start);
 
+        // connect vars to views
         b_openRoom = findViewById(R.id.b_openRoom);
         t_roomCode = findViewById(R.id.t_roomCode);
         et_name = findViewById(R.id.et_name);
+        topAppBar = findViewById(R.id.topAppBarHostStart);
+
+        // sets the app bar back button function
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(HostStartActivity.this, OnlineSetupActivity.class);
+                startActivity(in);
+            }
+        });
 
         // create room code
         Random rand = new Random();
@@ -42,6 +58,7 @@ public class HostStartActivity extends AppCompatActivity {
         // put room code on screen
         t_roomCode.setText(roomCode);
 
+        // access database to create room and add username to room
         DAORoom dao = new DAORoom();
         b_openRoom.setOnClickListener( v->{
             // get username from player
@@ -53,7 +70,7 @@ public class HostStartActivity extends AppCompatActivity {
             }
             Log.d("TAG", "HostStart: player was created");
 
-            // Open score board intent
+            // Open score board
             Intent in = new Intent(HostStartActivity.this, OnlineScoreboardActivity.class);
             in.putExtra("roomCode", roomCode);
             in.putExtra("enteredName", userName);
@@ -73,5 +90,25 @@ public class HostStartActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(time);
         return formatter.format(calendar.getTime());
+    }
+
+    // when you turn the phone, this function is called to save any data you wish to save
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        // save data
+        outState.putString("currentNickname", et_name.getText().toString());
+        outState.putString("currentCode", t_roomCode.getText().toString());
+
+        super.onSaveInstanceState(outState);
+    }
+
+    // when phone is done turning, this function is called to restore any of that data you saved
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle saved) {
+        // get values from saved state
+        et_name.setText(saved.getString("currentNickname"));
+        t_roomCode.setText(saved.getString("currentCode"));
+
+        super.onRestoreInstanceState(saved);
     }
 }

@@ -5,15 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="12dp"
     tools:context=".HelpActivity">
 
-    <TextView
-        android:id="@+id/textView8"
-        style="@style/h2"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Help" />
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarHelp"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/pink_dark"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_30"
+            app:title="@string/helpTitle"
+            app:titleCentered="true" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,7 +31,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView7"
@@ -32,7 +45,7 @@
                 android:layout_marginBottom="12dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
-                android:text="What do the modes do?"
+                android:text="@string/helpSubTitle"
                 android:textAlignment="viewStart"
                 android:textSize="24sp" />
 
@@ -44,7 +57,7 @@
                 android:layout_marginBottom="5dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
-                android:text="ScoreKeeping"
+                android:text="@string/helpHeading1"
                 android:textAlignment="viewStart"
                 android:textSize="18sp" />
 
@@ -56,7 +69,7 @@
                 android:layout_marginBottom="0dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
-                android:text="Offline"
+                android:text="@string/helpHeading2"
                 android:textAlignment="viewStart"
                 android:textSize="15sp" />
 
@@ -80,7 +93,7 @@
                 android:layout_marginBottom="0dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
-                android:text="Online"
+                android:text="@string/helpHeading3"
                 android:textAlignment="viewStart"
                 android:textSize="15sp" />
 
@@ -104,7 +117,7 @@
                 android:layout_marginBottom="0dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
-                android:text="Head to Head"
+                android:text="@string/helpHeading4"
                 android:textAlignment="viewStart"
                 android:textSize="15sp" />
 
@@ -129,7 +142,7 @@
                 android:layout_marginBottom="5dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
-                android:text="Time Keeping"
+                android:text="@string/helpHeading5"
                 android:textAlignment="viewStart"
                 android:textSize="18sp" />
 
@@ -165,7 +178,7 @@
                 android:layout_marginBottom="0dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
-                android:text="Stop Watch"
+                android:text="@string/helpHeading7"
                 android:textAlignment="viewStart"
                 android:textSize="15sp" />
 
@@ -189,7 +202,7 @@
                 android:layout_marginBottom="5dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
-                android:text="Dice Rolling"
+                android:text="@string/helpHeading8"
                 android:textAlignment="viewStart"
                 android:textSize="18sp" />
 
@@ -198,20 +211,12 @@
                 style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="40dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
                 android:text="@string/diceDescription"
                 android:textAlignment="viewStart"
                 android:textSize="15sp" />
-
-            <Button
-                android:id="@+id/b_backHelp"
-                style="@style/primaryButtonSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Back" />
 
         </LinearLayout>
     </ScrollView>

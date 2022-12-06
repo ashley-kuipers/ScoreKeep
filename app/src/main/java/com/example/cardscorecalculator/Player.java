@@ -5,7 +5,7 @@ public class Player {
     private int score;
     private boolean host;
 
-
+    // Creates a player object that will be stored in the database
     public Player(){};
     public Player(String name, int score, boolean host){
         this.name = name;

@@ -5,70 +5,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingStart="20dp"
-    android:paddingEnd="20dp"
     tools:context=".SportSetupActivity">
 
-    <TextView
-        android:id="@+id/t_enterRoomCode3"
-        style="@style/h2"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/sportsSetupTitle" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/et_teamLName"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarSportSetup"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/pink_dark"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_30"
+            app:title="@string/sportsSetupTitle"
+            app:titleCentered="true" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="Left Team Name"
-        android:inputType="textPersonName"
-        android:paddingStart="12dp"
-        android:textAlignment="center"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/et_teamRName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="Right Team Name"
-        android:inputType="textPersonName"
-        android:paddingStart="12dp"
-        android:textAlignment="center"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/et_teamLName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="@string/et_leftTeam"
+            android:inputType="textPersonName|textCapWords"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/et_points"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="How much does score go up by?"
-        android:inputType="number"
-        android:paddingStart="12dp"
-        android:textAlignment="center"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/et_teamRName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="@string/et_rightGame"
+            android:inputType="textPersonName|textCapWords"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/et_win"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="Points needed to win? (optional)"
-        android:inputType="number"
-        android:paddingStart="12dp"
-        android:textAlignment="center"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/et_points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="@string/et_sportsHint"
+            android:inputType="number"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/b_startSport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Start" />
+        <EditText
+            android:id="@+id/et_win"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="@string/et_winCond"
+            android:inputType="number"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/b_startSport"
+            style="@style/primaryButtonSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/b_startGame" />
+    </LinearLayout>
+
 </LinearLayout>

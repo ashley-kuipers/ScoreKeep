@@ -1,9 +1,6 @@
 package com.example.cardscorecalculator;
 
-import android.content.Intent;
-import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -28,7 +25,6 @@ public class DAORoom {
     }
 
     public boolean addPlayer(String roomCode, String username, boolean isHost){
-
         // checks that username does not already exist
         dbr.child(roomCode).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

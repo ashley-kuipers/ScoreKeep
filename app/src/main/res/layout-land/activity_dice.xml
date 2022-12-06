@@ -39,8 +39,8 @@
             android:layout_marginTop="0dp"
             android:hint="@string/et_numSides"
             android:inputType="numberSigned"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:paddingEnd="50dp"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/b_rollDice"
@@ -50,6 +50,7 @@
             android:layout_marginStart="20dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
+            android:minWidth="200dp"
             android:text="@string/b_roll" />
     </LinearLayout>
 
@@ -64,7 +65,7 @@
         android:paddingStart="0dp"
         android:paddingEnd="0dp"
         android:text="#"
-        android:textSize="300sp" />
+        android:textSize="180sp" />
 
 
 </LinearLayout>

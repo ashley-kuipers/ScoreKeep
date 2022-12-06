@@ -18,11 +18,6 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
 
         <LinearLayout
             android:layout_width="0dp"
@@ -33,7 +28,7 @@
             <ImageButton
                 android:id="@+id/b_addHours"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/rounded_corners_button"
@@ -53,8 +48,8 @@
                     android:layout_height="48dp"
                     android:gravity="center"
                     android:text="00"
-                    android:textSize="30sp"
-                    app:autoSizeMaxTextSize="30sp"
+                    android:textSize="26sp"
+                    app:autoSizeMaxTextSize="26sp"
                     app:autoSizeTextType="uniform" />
 
                 <TextView
@@ -69,7 +64,7 @@
             <ImageButton
                 android:id="@+id/b_subHours"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/rounded_corners_button"
@@ -85,7 +80,7 @@
             <ImageButton
                 android:id="@+id/b_addMins"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/rounded_corners_button"
@@ -105,8 +100,8 @@
                     android:layout_height="48dp"
                     android:gravity="center"
                     android:text="00"
-                    android:textSize="30sp"
-                    app:autoSizeMaxTextSize="30sp"
+                    android:textSize="26sp"
+                    app:autoSizeMaxTextSize="26sp"
                     app:autoSizeTextType="uniform" />
 
                 <TextView
@@ -121,7 +116,7 @@
             <ImageButton
                 android:id="@+id/b_subMins"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/rounded_corners_button"
@@ -137,7 +132,7 @@
             <ImageButton
                 android:id="@+id/b_addSec"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/rounded_corners_button"
@@ -160,8 +155,8 @@
                     android:layout_height="48dp"
                     android:gravity="center"
                     android:text="00"
-                    android:textSize="30sp"
-                    app:autoSizeMaxTextSize="30sp"
+                    android:textSize="26sp"
+                    app:autoSizeMaxTextSize="26sp"
                     app:autoSizeTextType="uniform" />
 
                 <TextView
@@ -176,57 +171,50 @@
             <ImageButton
                 android:id="@+id/b_subSecs"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/rounded_corners_button"
                 app:srcCompat="@drawable/ic_baseline_remove_48" />
         </LinearLayout>
 
-        <Space
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+            <Button
+                android:id="@+id/b_resetTimer"
+                style="@style/secondaryButtonSmall"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/blue_dark"
+                android:insetTop="0dp"
+                android:text="@string/b_reset" />
 
-        <Button
-            android:id="@+id/b_resetTimer"
-            style="@style/secondaryButtonSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/blue_dark"
-            android:text="@string/b_reset" />
+            <Button
+                android:id="@+id/b_startTimer"
+                style="@style/secondaryButtonSmall"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:insetBottom="0dp"
+                android:text="@string/b_start" />
 
-        <Button
-            android:id="@+id/b_startTimer"
-            style="@style/secondaryButtonSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="50dp"
-            android:layout_weight="1"
-            android:text="@string/b_start" />
-
-        <Button
-            android:id="@+id/b_stopTimer"
-            style="@style/secondaryButtonSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="50dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/blue_dark"
-            android:text="@string/b_stop"
-            android:visibility="gone" />
+            <Button
+                android:id="@+id/b_stopTimer"
+                style="@style/secondaryButtonSmall"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/blue_dark"
+                android:insetBottom="0dp"
+                android:text="@string/b_stop"
+                android:visibility="gone" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -9,6 +9,23 @@
     android:orientation="vertical"
     tools:context=".LocalSetup">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarLocalSetup"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/pink_dark"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_30"
+            app:title="@string/titleLocalSetup"
+            app:titleCentered="true"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <LinearLayout
         android:id="@+id/layout_setup"
         android:layout_width="match_parent"
@@ -23,12 +40,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/titleLocalSetup"
+            android:text="@string/subTitleLocalSetup"
             android:textAlignment="center" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:paddingStart="16dp"
             android:paddingEnd="16dp">
@@ -37,7 +56,6 @@
                 android:id="@+id/et_numPlayers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:layout_weight="2"
                 android:autofillHints=""
                 android:ems="10"
@@ -54,7 +72,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                android:text="@string/b_start" />
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/b_okay" />
         </LinearLayout>
 
         <FrameLayout

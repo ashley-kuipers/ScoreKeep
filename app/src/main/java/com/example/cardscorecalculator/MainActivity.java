@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // connect vars to views
         b_scorekeep = findViewById(R.id.b_scorekeep);
         b_timer = findViewById(R.id.b_timer);
         b_dice = findViewById(R.id.b_dice);
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         b_help = findViewById(R.id.b_help);
         b_settings = findViewById(R.id.b_settings);
 
+        // opens page to choose scorekeep mode
         b_scorekeep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // opens timer/stopwatch activity
         b_timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // opens dice activity
         b_dice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // opens bug submit form
         b_chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: create help page
+        // opens help page
         b_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,11 +74,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: create settings page
+        // opens settings page
         b_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(MainActivity.this, ScoreKeepModeActivity.class);
+                Intent in = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(in);
             }
         });

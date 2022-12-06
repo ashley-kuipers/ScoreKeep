@@ -26,7 +26,6 @@ public class LocalScoreboard extends AppCompatActivity {
     HashMap<Integer, String> map= new HashMap<Integer, String>();
     Context context;
     Button b_addScores, b_endGame;
-    boolean restored = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +79,7 @@ public class LocalScoreboard extends AppCompatActivity {
             // add to array to retrieve previous scores later
             tv_scores.add(tvs);
 
-            //editText where user enters score
+            // editText where user enters score
             EditText et = new EditText(context, null, 0, R.style.et_scores);
             if (i % 2 == 0) {
                 et.setBackground(getResources().getDrawable(R.drawable.et_selector_opposite));
@@ -101,6 +100,7 @@ public class LocalScoreboard extends AppCompatActivity {
 
         }
 
+        // adds all the entered scores to everyone's current score
         b_addScores.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
                 for(int i = 0; i < names.size(); i++){
@@ -118,6 +118,7 @@ public class LocalScoreboard extends AppCompatActivity {
             }
         });
 
+        // ends the game and sends the scores to the EndGame activity
         b_endGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,8 +133,6 @@ public class LocalScoreboard extends AppCompatActivity {
                 startActivity(in);
             }
         });
-
-        Log.d("TAG", "End of oncreate");
     }
 
     // when you turn the phone, this function is called to save any data you wish to save
