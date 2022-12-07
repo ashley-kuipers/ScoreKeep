@@ -40,7 +40,7 @@ public class PlayerJoinActivity extends AppCompatActivity {
         });
 
         // connects to firebase database
-        DAORoom dao = new DAORoom();
+        DAORoom2 dao = new DAORoom2();
 
         // player
         b_join.setOnClickListener( v->{
@@ -48,24 +48,40 @@ public class PlayerJoinActivity extends AppCompatActivity {
             userName = et_name.getText().toString();
 
             // add player to room in the database
-            dao.addPlayer(roomCode, userName, false);
+            dao.newPlayer(roomCode, userName, false);
 
             // need to add delay so database has time to update
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    // check if they exist in the database?
+
+
                     Intent in = new Intent(PlayerJoinActivity.this, OnlineScoreboardActivity.class);
                     in.putExtra("roomCode", roomCode);
                     in.putExtra("enteredName", userName);
                     in.putExtra("isHost", false);
                     startActivity(in);
+
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            dao.removeEL();
+                        }
+                    }, 400);
                 }
             }, 400);
 
         });
 
     }
+
+
+
+
 
     // when you turn the phone, this function is called to save any data you wish to save
     @Override

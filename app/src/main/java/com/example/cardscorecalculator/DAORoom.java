@@ -40,7 +40,7 @@ public class DAORoom {
                     if(userList == null || !userList.containsValue(username)){
                         Log.d("TAG", "DAO: Added " + username);
 
-                        // add new users name to list of users
+                        // add new users name to list of users in database
                         dbr.child(roomCode).child("user_list").push().setValue(username);
 
                         // create player object and add to database
