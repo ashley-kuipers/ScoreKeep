@@ -22,7 +22,7 @@ public class OfflineSetup extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_local_setup);
+        setContentView(R.layout.activity_offline_setup);
 
         // connect vars to views
         e_numPlayers = findViewById(R.id.et_numPlayers);

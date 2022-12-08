@@ -19,7 +19,7 @@ public class HeadtoHeadSetupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sport_setup);
+        setContentView(R.layout.activity_headtohead_setup);
 
         // connect vars to view
         b_start = findViewById(R.id.b_startSport);

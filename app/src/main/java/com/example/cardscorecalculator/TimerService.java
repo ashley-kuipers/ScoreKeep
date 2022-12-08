@@ -10,9 +10,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.os.IBinder;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -55,9 +53,6 @@ public class TimerService extends Service {
 
         notificationManager = NotificationManagerCompat.from(this);
 
-        Log.d("TAG", "notification before timer " + notification);
-        Log.d("TAG", "are notifications enabled?? before timer " + NotificationManagerCompat.from(this).areNotificationsEnabled());
-
         long millis = intent.getLongExtra("millis", 0);
 
         if(millis != 0){
@@ -83,10 +78,8 @@ public class TimerService extends Service {
                 @Override
                 public void onFinish() {
                     // send push notification
-                    Log.d("TAG", "notification end timer " + notification);
                     if(notification){
                         notificationManager.notify(111, builder.build());
-                        Log.d("TAG", "Sent push notification");
                     }
 
                     if(sound){
@@ -134,8 +127,6 @@ public class TimerService extends Service {
         // retrieve variables from file
         sound = sh.getBoolean("soundSetting", true);
         notification = sh.getBoolean("notificationSetting", NotificationManagerCompat.from(this).areNotificationsEnabled());
-        Log.d("TAG", "are notifications enabled?? timerservice " + NotificationManagerCompat.from(this).areNotificationsEnabled());
-        Log.d("TAG", "notification timerservice " + notification);
     }
 
     private void createNotificationChannel() {

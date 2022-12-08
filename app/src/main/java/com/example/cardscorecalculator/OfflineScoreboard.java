@@ -30,7 +30,7 @@ public class OfflineScoreboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_local_scoreboard);
+        setContentView(R.layout.activity_offline_scoreboard);
         b_addScores = findViewById(R.id.b_addscores);
         b_endGame = findViewById(R.id.b_endgamelocal);
         names = getIntent().getStringArrayListExtra("namesArray");

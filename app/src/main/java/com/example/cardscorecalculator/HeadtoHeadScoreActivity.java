@@ -26,7 +26,7 @@ public class HeadtoHeadScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        setContentView(R.layout.activity_sport_score);
+        setContentView(R.layout.activity_headtohead_score);
 
         // get data from intents
         Bundle bun = getIntent().getExtras();

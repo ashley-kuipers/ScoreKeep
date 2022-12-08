@@ -30,7 +30,7 @@ public class OfflineEnterPlayerNamesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_local_enter_player_names, container, false);
+        View view = inflater.inflate(R.layout.fragment_offline_enter_player_names, container, false);
         context = getContext();
 
         // connect vars to views and initialize initial variables

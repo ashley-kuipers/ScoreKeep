@@ -1,29 +1,20 @@
 package com.example.cardscorecalculator;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
-import androidx.preference.PreferenceFragmentCompat;
 
 import com.google.android.material.appbar.MaterialToolbar;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 public class SettingsActivity extends AppCompatActivity {
     SwitchCompat switch_darkmode, switch_notification, switch_sound;
@@ -163,9 +154,6 @@ public class SettingsActivity extends AppCompatActivity {
         sound = sh.getBoolean("soundSetting", true);
         notification = sh.getBoolean("notificationSetting", NotificationManagerCompat.from(this).areNotificationsEnabled());
         notificationSetByUser = sh.getBoolean("notificationSetByUser", false);
-        Log.d("TAG", "are notifications enabled?? settings " + NotificationManagerCompat.from(this).areNotificationsEnabled());
-
-        Log.d("TAG", "default values of dm, n, s " + darkMode + " " + notification + " " + sound);
 
     }
 

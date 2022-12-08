@@ -22,7 +22,8 @@ public class StopwatchFragment extends Fragment {
     private long secs,mins,hrs, ms;
     private Button b_start, b_stop, b_reset;
     private TextView t_hour, t_min, t_sec;
-    private boolean isRunning, reset=true;
+    private static boolean isRunning;
+    private boolean reset=true;
 
     public StopwatchFragment() {
         // Required empty public constructor
@@ -44,6 +45,11 @@ public class StopwatchFragment extends Fragment {
         // register receivers (listening to broadcasts from StopWatchService)
         requireActivity().registerReceiver(stopWatchTick, new IntentFilter("stopWatchTick"));
         requireActivity().registerReceiver(stopWatchEnd, new IntentFilter("stopWatchEnd"));
+
+        if(isRunning){
+            b_start.setVisibility(View.GONE);
+            b_stop.setVisibility(View.VISIBLE);
+        }
 
         // starts the stopwatch
         b_start.setOnClickListener(new View.OnClickListener() {

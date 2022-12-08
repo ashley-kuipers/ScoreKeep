@@ -31,7 +31,7 @@ public class TimerFragment extends Fragment {
     ImageButton b_addHour, b_addMin, b_addSec, b_subHour, b_subMin, b_subSec;
     TextView t_hour, t_min, t_sec;
     long hour=0, min=0, sec=0;
-    boolean timerIsRunning = false;
+    static boolean timerIsRunning;
     private static final String CHANNEL_ID = "0";
 
     public TimerFragment() {
@@ -171,21 +171,24 @@ public class TimerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // starts TimerService (allows timer to run in background)
-                Intent i = new Intent(getActivity(), TimerService.class);
-                i.putExtra("millis", getTimeInMillis(hour, min, sec));
-                getActivity().startService(i);
+                long millis1 = getTimeInMillis(hour, min, sec);
+                if(millis1 > 0){
+                    Intent i = new Intent(getActivity(), TimerService.class);
+                    i.putExtra("millis", millis1);
+                    getActivity().startService(i);
 
-                // make all add/sub buttons unclickable and switches out start and stop button
-                b_addHour.setEnabled(false);
-                b_subHour.setEnabled(false);
-                b_addMin.setEnabled(false);
-                b_subMin.setEnabled(false);
-                b_addSec.setEnabled(false);
-                b_subSec.setEnabled(false);
-                b_start.setVisibility(View.GONE);
-                b_stop.setVisibility(View.VISIBLE);
+                    // make all add/sub buttons unclickable and switches out start and stop button
+                    b_addHour.setEnabled(false);
+                    b_subHour.setEnabled(false);
+                    b_addMin.setEnabled(false);
+                    b_subMin.setEnabled(false);
+                    b_addSec.setEnabled(false);
+                    b_subSec.setEnabled(false);
+                    b_start.setVisibility(View.GONE);
+                    b_stop.setVisibility(View.VISIBLE);
 
-                timerIsRunning = true;
+                    timerIsRunning = true;
+                }
 
             }
         });
@@ -232,7 +235,7 @@ public class TimerFragment extends Fragment {
                         setMin(min);
                         setSec(sec);
                     }
-                }, 200);
+                }, 400);
 
             }
         });
@@ -247,8 +250,6 @@ public class TimerFragment extends Fragment {
         // Inflate the layout for this fragment
         return v;
     }
-
-
 
     BroadcastReceiver timerTick = new BroadcastReceiver() {
         @Override

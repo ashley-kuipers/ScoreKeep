@@ -95,8 +95,5 @@ public class TimerActivity extends AppCompatActivity {
         // retrieve variables from file
         notification = sh.getBoolean("notificationSetting", NotificationManagerCompat.from(this).areNotificationsEnabled());
         notificationSetByUser = sh.getBoolean("notificationSetByUser", false);
-
-        Log.d("TAG", "are notifications enabled?? timerActivity " + NotificationManagerCompat.from(this).areNotificationsEnabled());
-        Log.d("TAG", "notification timerActivity " + notification);
     }
 }
