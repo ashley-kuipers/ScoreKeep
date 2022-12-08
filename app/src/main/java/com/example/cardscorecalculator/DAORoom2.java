@@ -48,7 +48,7 @@ public class DAORoom2 {
                         int num = rand.nextInt(88) + 10;
                         addPlayer(roomCode, username + num, false);
 
-                    // else user doesn't exist, so add them into the room
+                        // else user doesn't exist, so add them into the room
                     } else {
                         Log.d("TAG", "user doesn't exist! Adding them");
 
@@ -56,7 +56,7 @@ public class DAORoom2 {
                         addPlayer(roomCode, username, false);
                     }
 
-                // else the room doesn't exist
+                    // else the room doesn't exist
                 } else {
                     // if the user is the host, then create a new room, else do nothing
                     if(isHost){
