@@ -18,13 +18,13 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-public class LocalEnterPlayerNamesFragment extends Fragment {
+public class OfflineEnterPlayerNamesFragment extends Fragment {
     LinearLayout layout_enterNames;
     Context context;
     Button b_addNames;
     ArrayList<EditText> inputs = new ArrayList<EditText>();
 
-    public LocalEnterPlayerNamesFragment() {
+    public OfflineEnterPlayerNamesFragment() {
         // Required empty public constructor
     }
 
@@ -74,7 +74,7 @@ public class LocalEnterPlayerNamesFragment extends Fragment {
                 }
 
                 // opens scoreboard page with the provided player names
-                Intent in = new Intent(context, LocalScoreboard.class);
+                Intent in = new Intent(context, OfflineScoreboard.class);
                 in.putExtra("namesArray", names);
                 startActivity(in);
             }

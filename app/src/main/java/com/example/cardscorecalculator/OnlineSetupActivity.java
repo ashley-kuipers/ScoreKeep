@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -38,7 +36,7 @@ public class OnlineSetupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // open HostStartActivity
-                Intent in = new Intent(OnlineSetupActivity.this, HostStartActivity.class);
+                Intent in = new Intent(OnlineSetupActivity.this, OnlineHostStartActivity.class);
                 startActivity(in);
             }
         });
@@ -48,7 +46,7 @@ public class OnlineSetupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // open PlayerJoinActivity
-                Intent in = new Intent(OnlineSetupActivity.this, PlayerJoinActivity.class);
+                Intent in = new Intent(OnlineSetupActivity.this, OnlinePlayerJoinActivity.class);
                 startActivity(in);
             }
         });

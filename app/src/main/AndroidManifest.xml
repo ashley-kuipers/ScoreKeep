@@ -55,14 +55,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SportScoreActivity"
+            android:name=".HeadtoHeadScoreActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SportSetupActivity"
+            android:name=".HeadtoHeadSetupActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -76,14 +76,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".PlayerJoinActivity"
+            android:name=".OnlinePlayerJoinActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".HostStartActivity"
+            android:name=".OnlineHostStartActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -104,14 +104,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".LocalScoreboard"
+            android:name=".OfflineScoreboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LocalSetup"
+            android:name=".OfflineSetup"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

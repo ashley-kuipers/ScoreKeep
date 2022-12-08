@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-public class LocalSetup extends AppCompatActivity {
+public class OfflineSetup extends AppCompatActivity {
     EditText e_numPlayers;
     Button b_start;
     LinearLayout layout_setup;
@@ -48,7 +48,7 @@ public class LocalSetup extends AppCompatActivity {
                 // set up new fragment manager
                 FragmentManager fr = getSupportFragmentManager();
                 FragmentTransaction ft = fr.beginTransaction();
-                LocalEnterPlayerNamesFragment names = new LocalEnterPlayerNamesFragment();
+                OfflineEnterPlayerNamesFragment names = new OfflineEnterPlayerNamesFragment();
 
                 // package info and send to fragment
                 Bundle bundle = new Bundle();

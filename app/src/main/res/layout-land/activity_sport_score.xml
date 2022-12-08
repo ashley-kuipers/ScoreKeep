@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/orange"
     android:orientation="vertical"
-    tools:context=".SportScoreActivity">
+    tools:context=".HeadtoHeadScoreActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

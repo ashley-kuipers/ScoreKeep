@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LocalScoreboard extends AppCompatActivity {
+public class OfflineScoreboard extends AppCompatActivity {
     ArrayList<String> names = new ArrayList<String>();
     ArrayList<EditText> et_scores = new ArrayList<EditText>();
     ArrayList<TextView> tv_scores = new ArrayList<TextView>();

@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // gets shared prefs
+        getSharedPreferences();
+
         // connect vars to views
         b_scorekeep = findViewById(R.id.b_scorekeep);
         b_timer = findViewById(R.id.b_timer);
@@ -30,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
         b_help = findViewById(R.id.b_help);
         b_settings = findViewById(R.id.b_settings);
 
-        // checks with shared prefs whether darkmode is on/off in last session and sets appropriately
-        getSharedPreferences();
+        // if darkmode was on, turn it on
         if (darkMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
@@ -101,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
     // default value of darkmode is based on system settings
     public void getSharedPreferences(){
         SharedPreferences sh = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
-        darkMode = sh.getBoolean("darkMode", AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES);
+        darkMode = sh.getBoolean("darkMode", isNightMode(this));
+    }
+
+    public boolean isNightMode(Context context) {
+        int nightModeFlags = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
     }
 }

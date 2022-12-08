@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-public class SportSetupActivity extends AppCompatActivity {
+public class HeadtoHeadSetupActivity extends AppCompatActivity {
     Button b_start;
     TextView teamL, teamR, points, winPoints;
     MaterialToolbar topAppBar;
@@ -41,7 +41,7 @@ public class SportSetupActivity extends AppCompatActivity {
         b_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(SportSetupActivity.this, SportScoreActivity.class);
+                Intent in = new Intent(HeadtoHeadSetupActivity.this, HeadtoHeadScoreActivity.class);
                 in.putExtra("teamL", teamL.getText().toString());
                 in.putExtra("teamR", teamR.getText().toString());
                 in.putExtra("points", Integer.parseInt(points.getText().toString()));

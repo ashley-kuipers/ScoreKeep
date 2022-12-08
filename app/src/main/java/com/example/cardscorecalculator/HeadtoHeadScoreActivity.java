@@ -13,9 +13,8 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.HashMap;
-import java.util.Locale;
 
-public class SportScoreActivity extends AppCompatActivity {
+public class HeadtoHeadScoreActivity extends AppCompatActivity {
     String teamL, teamR;
     int points = 1, win = 999999999;
     TextView t_teamL, t_teamR, t_teamLscore, t_teamRscore;
@@ -119,7 +118,7 @@ public class SportScoreActivity extends AppCompatActivity {
 
     // opens the end game activity and sends the scores to it
     public void leaveActivity(){
-        Intent in = new Intent(SportScoreActivity.this, EndGame.class);
+        Intent in = new Intent(HeadtoHeadScoreActivity.this, EndGame.class);
         in.putExtra("scores", scoresMap);
         startActivity(in);
     }

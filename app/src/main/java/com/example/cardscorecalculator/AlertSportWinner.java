@@ -2,7 +2,6 @@ package com.example.cardscorecalculator;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,7 +21,7 @@ public class AlertSportWinner extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.dialog);
         builder.setTitle(text);
         builder.setPositiveButton("OKAY", (dialogInterface, i) -> {
-            SportScoreActivity ssa = (SportScoreActivity) getActivity();
+            HeadtoHeadScoreActivity ssa = (HeadtoHeadScoreActivity) getActivity();
             if (ssa != null) {
                 ssa.leaveActivity();
             }

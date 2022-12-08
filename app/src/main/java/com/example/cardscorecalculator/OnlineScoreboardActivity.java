@@ -176,7 +176,6 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.b_add) {
-                    Toast.makeText(getApplicationContext(), "Add", Toast.LENGTH_LONG).show();
                     b_add.performClick();
                 }
                 return false;

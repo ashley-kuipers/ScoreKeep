@@ -7,10 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -25,10 +25,11 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
 
-public class PlayerJoinActivity extends AppCompatActivity {
-    Button b_join;
-    EditText et_room, et_name;
-    String userName, roomCode;
+public class OnlineHostStartActivity extends AppCompatActivity {
+    String roomCode = "", userName;
+    Button b_openRoom;
+    TextView t_roomCode;
+    EditText et_name;
     MaterialToolbar topAppBar;
     private DatabaseReference dbr;
     private ValueEventListener vel;
@@ -36,29 +37,40 @@ public class PlayerJoinActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_join);
+        setContentView(R.layout.activity_host_start);
 
         // connect vars to views
-        b_join = findViewById(R.id.b_joinRoom);
-        et_room = findViewById(R.id.et_room_code_player_join);
-        et_name = findViewById(R.id.et_player_join);
-        topAppBar = findViewById(R.id.topAppBarPlayerJoin);
+        b_openRoom = findViewById(R.id.b_openRoom);
+        t_roomCode = findViewById(R.id.t_roomCode);
+        et_name = findViewById(R.id.et_name);
+        topAppBar = findViewById(R.id.topAppBarHostStart);
 
         // sets the app bar back button function
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent in = new Intent(OnlineHostStartActivity.this, OnlineSetupActivity.class);
+                startActivity(in);
             }
         });
 
+        // create room code
+        Random rand = new Random();
+        String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        for(int i = 0; i<4; i++){
+            int randNum = rand.nextInt(26);
+            roomCode += alphabet[randNum];
+        }
+        // put room code on screen
+        t_roomCode.setText(roomCode);
+
+        // access database to create room and add username to room
         // connects to firebase database
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         dbr = db.getReference("Rooms");
 
-        // player
-        b_join.setOnClickListener( v->{
-            roomCode = et_room.getText().toString();
+        b_openRoom.setOnClickListener( v->{
+            // get username from player
             userName = et_name.getText().toString();
 
             // add player to room in the database
@@ -67,30 +79,27 @@ public class PlayerJoinActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // if room exists
                     if(dataSnapshot.getValue() != null){
+                        Toast.makeText(OnlineHostStartActivity.this, "Room already exists! Please go back and reopen page.", Toast.LENGTH_SHORT).show();
+
+                    } else {
+
                         // if username already exists
                         if(dataSnapshot.child(userName).getValue() != null){
-                            Log.d("TAG", "Username exists already!");
+                            // notify user that the username is taken
+                            Toast.makeText(OnlineHostStartActivity.this, Html.fromHtml("<small>\"User already exists! Please try a new nickname\"</small>"), Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(PlayerJoinActivity.this, Html.fromHtml("<small>\"User already exists! Please try a new nickname\"</small>"), Toast.LENGTH_SHORT).show();
-
-                        // else user doesn't exist, so add them into the room
+                        // else add them into the room
                         } else {
-                            Log.d("TAG", "User doesn't exist! Adding them");
-
                             // add the player to database
                             addPlayer(roomCode, userName);
 
-                            Intent in = new Intent(PlayerJoinActivity.this, OnlineScoreboardActivity.class);
+                            Intent in = new Intent(OnlineHostStartActivity.this, OnlineScoreboardActivity.class);
                             in.putExtra("roomCode", roomCode);
                             in.putExtra("enteredName", userName);
-                            in.putExtra("isHost", false);
+                            in.putExtra("isHost", true);
                             startActivity(in);
 
                         }
-
-                    } else {
-                        // notify user that room doesn't exist
-                        Toast.makeText(PlayerJoinActivity.this, "Room does not exist! Please try a new code.", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -113,21 +122,36 @@ public class PlayerJoinActivity extends AppCompatActivity {
 
     }
 
+    // Returns a formatted string of the current system time
+    public String getTime(){
+        // get the time when the new code was created
+        long time = System.currentTimeMillis();
+        // Create a DateFormatter object for displaying date in specified format.
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss", Locale.CANADA);
+        // Create a calendar object that will convert the date and time value in milliseconds to date.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(time);
+        return formatter.format(calendar.getTime());
+    }
+
     // when you turn the phone, this function is called to save any data you wish to save
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
         // save data
-        outState.putString("currentRoomCode", et_room.getText().toString());
-        outState.putString("currentName", et_name.getText().toString());
+        outState.putString("currentNickname", et_name.getText().toString());
+        outState.putString("currentCode", t_roomCode.getText().toString());
+
+        super.onSaveInstanceState(outState);
     }
 
     // when phone is done turning, this function is called to restore any of that data you saved
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle saved) {
+        // get values from saved state
+        et_name.setText(saved.getString("currentNickname"));
+        t_roomCode.setText(saved.getString("currentCode"));
+
         super.onRestoreInstanceState(saved);
-        et_room.setText(saved.getString("currentRoomCode"));
-        et_name.setText(saved.getString("currentName"));
     }
 
     // creates a player object and adds to database
@@ -136,7 +160,7 @@ public class PlayerJoinActivity extends AppCompatActivity {
         dbr.child(roomCode).child("user_list").push().setValue(username);
 
         // create player object and add to database
-        Player player = new Player(username, 0, false);
+        Player player = new Player(username, 0, true);
         dbr.child(roomCode).child(player.getName()).setValue(player);
 
         // set isPlaying to true
@@ -146,21 +170,9 @@ public class PlayerJoinActivity extends AppCompatActivity {
         dbr.child(roomCode).child("timeStamp").setValue(getTime());
     }
 
-    // removes the event listener when leave activity
+    // removes event listener when leave activity
     public void removeEL(){
         dbr.removeEventListener(vel);
-    }
-
-    // Returns a formatted string of the current system time
-    public String getTime(){
-        // get the time when the new code was created
-        long time = System.currentTimeMillis();
-        // Create a DateFormatter object for displaying date in specified format.
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy/HH:mm:ss", Locale.CANADA);
-        // Create a calendar object that will convert the date and time value in milliseconds to date.
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(time);
-        return formatter.format(calendar.getTime());
     }
 
 }

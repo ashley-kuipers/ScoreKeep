@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center|top"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
     <ImageView
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginBottom="10dp"
-        android:maxHeight="100dp"
+        android:maxHeight="200dp"
         android:minHeight="100dp"
         app:srcCompat="@drawable/scorecard_icon" />
 

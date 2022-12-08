@@ -50,7 +50,8 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:switchMinWidth="56dp" />
+                android:switchMinWidth="56dp"
+                app:showText="true" />
 
         </LinearLayout>
 
@@ -72,7 +73,7 @@
                 android:id="@+id/textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="@string/notificationSwitch"
                 android:textAlignment="viewStart" />
 
@@ -84,7 +85,8 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:switchMinWidth="56dp" />
+                android:switchMinWidth="56dp"
+                app:showText="true" />
         </LinearLayout>
 
         <View
@@ -105,7 +107,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="@string/soundSwitch"
                 android:textAlignment="viewStart" />
 
@@ -117,7 +119,8 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:switchMinWidth="56dp" />
+                android:switchMinWidth="56dp"
+                app:showText="true" />
 
         </LinearLayout>
 

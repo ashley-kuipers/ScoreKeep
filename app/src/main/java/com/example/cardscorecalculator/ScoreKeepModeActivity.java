@@ -36,7 +36,7 @@ public class ScoreKeepModeActivity extends AppCompatActivity {
         b_local.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(ScoreKeepModeActivity.this, LocalSetup.class);
+                Intent in = new Intent(ScoreKeepModeActivity.this, OfflineSetup.class);
                 startActivity(in);
             }
         });
@@ -54,7 +54,7 @@ public class ScoreKeepModeActivity extends AppCompatActivity {
         b_sports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(ScoreKeepModeActivity.this, SportSetupActivity.class);
+                Intent in = new Intent(ScoreKeepModeActivity.this, HeadtoHeadSetupActivity.class);
                 startActivity(in);
             }
         });
