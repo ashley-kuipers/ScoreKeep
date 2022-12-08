@@ -66,10 +66,9 @@
 
         <Button
             android:id="@+id/b_dice"
-            style="@style/secondaryButtonSmall"
+            style="@style/tertiaryButtonSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue_dark"
             android:text="@string/mainButton3" />
 
         <LinearLayout

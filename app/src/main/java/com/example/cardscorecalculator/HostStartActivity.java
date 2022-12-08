@@ -88,14 +88,11 @@ public class HostStartActivity extends AppCompatActivity {
 
                         // if username already exists
                         if(dataSnapshot.child(userName).getValue() != null){
-                            Log.d("TAG", "Username exists already!");
-
+                            // notify user that the username is taken
                             Toast.makeText(HostStartActivity.this, Html.fromHtml("<small>\"User already exists! Please try a new nickname\"</small>"), Toast.LENGTH_SHORT).show();
 
-                        // else user doesn't exist, so add them into the room
+                        // else add them into the room
                         } else {
-                            Log.d("TAG", "User doesn't exist! Adding them");
-
                             // add the player to database
                             addPlayer(roomCode, userName);
 
@@ -160,6 +157,7 @@ public class HostStartActivity extends AppCompatActivity {
         super.onRestoreInstanceState(saved);
     }
 
+    // creates a player object and adds to database
     private void addPlayer(String roomCode, String username){
         // add new users name to list of users in database
         dbr.child(roomCode).child("user_list").push().setValue(username);
@@ -175,9 +173,9 @@ public class HostStartActivity extends AppCompatActivity {
         dbr.child(roomCode).child("timeStamp").setValue(getTime());
     }
 
+    // removes event listener when leave activity
     public void removeEL(){
         dbr.removeEventListener(vel);
-        Log.d("TAG", "removed event listener");
     }
 
 }

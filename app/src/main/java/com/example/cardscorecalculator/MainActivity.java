@@ -3,7 +3,9 @@ package com.example.cardscorecalculator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.ImageButton;
 public class MainActivity extends AppCompatActivity {
     Button b_scorekeep, b_timer, b_dice;
     ImageButton b_chat, b_help, b_settings;
+    boolean darkMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
         b_chat = findViewById(R.id.b_chat);
         b_help = findViewById(R.id.b_help);
         b_settings = findViewById(R.id.b_settings);
+
+        // checks with shared prefs whether darkmode is on/off in last session and sets appropriately
+        getSharedPreferences();
+        if (darkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         // opens page to choose scorekeep mode
         b_scorekeep.setOnClickListener(new View.OnClickListener() {
@@ -83,5 +94,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(in);
             }
         });
+
+    }
+
+    // retrieve variables from file
+    // default value of darkmode is based on system settings
+    public void getSharedPreferences(){
+        SharedPreferences sh = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+        darkMode = sh.getBoolean("darkMode", AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES);
     }
 }

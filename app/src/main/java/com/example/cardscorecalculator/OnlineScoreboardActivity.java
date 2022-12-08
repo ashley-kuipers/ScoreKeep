@@ -27,6 +27,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -35,28 +36,32 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
     String roomCode, userName;
     ListView scoreboard;
     ArrayList<String> leaderboard = new ArrayList<>();
-    Button b_add2, b_endGame, b_leaveGame;
+    Button b_add, b_endGame, b_leaveGame;
     int currentScore;
     LinearLayout scoreboard_buttons;
     HashMap<Integer, String> scoresMap = new HashMap<Integer, String>();
-    boolean isPlaying = true, isHost;
+    boolean isPlaying = true, isHost, justRotated;
     MaterialToolbar topAppBar;
+    private DatabaseReference room;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online_scoreboard);
 
-        b_add2 = findViewById(R.id.b_add2);
+        // connect views to vars
+        b_add = findViewById(R.id.b_add2);
         b_endGame = findViewById(R.id.b_onlineEndGame);
         b_leaveGame = findViewById(R.id.b_leaveGame);
         scoreboard_buttons = findViewById(R.id.scoreboard_buttons);
         topAppBar = findViewById(R.id.topAppBarOnlineScoreboard);
-
         scoreboard = findViewById(R.id.lv_leaderboard);
+
+        // create listview adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.custom_listview, android.R.id.text1, leaderboard);
         scoreboard.setAdapter(adapter);
 
+        // get vars from intent
         Bundle bun = getIntent().getExtras();
         roomCode = bun.getString("roomCode");
         userName = bun.getString("enteredName");
@@ -69,15 +74,17 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
             b_leaveGame.setVisibility(VISIBLE);
         }
 
+        // add room code to top bar
         topAppBar.setTitle("Room " + roomCode + " Scoreboard");
 
         Log.d("TAG", "Room Code " + roomCode + ", with " + userName + ", who is host? " + isHost);
         
         // get database reference for this room
-        DAORoom dao = new DAORoom();
-        DatabaseReference room = dao.getScores(roomCode);
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference dbr = db.getReference("Rooms");
+        room = dbr.child(roomCode);
 
-        // everytime the database changes, it updates (add handler so database has time to add original player in)
+        // everytime the database changes, it updates the screen content (add handler delay so database has time to add original player in)
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -85,7 +92,7 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
                 room.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        // clear leaderboard because it reloads on every change
+                        // clear leaderboard (entries get re-added on every update)
                         leaderboard.clear();
                         scoresMap.clear();
 
@@ -101,6 +108,7 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
                                     // get the score from the playerInfo
                                     currentScore = Integer.parseInt(String.valueOf(playerInfo.get("score")));
                                 }
+
                                 // add text to the leaderboard listview
                                 leaderboard.add(value.toUpperCase() + ": " + currentScore);
                                 adapter.notifyDataSetChanged();
@@ -108,14 +116,19 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
                                 // add score to scores list (to send to endGame activity)
                                 scoresMap.put(currentScore, value.toUpperCase());
 
-                                // get the value of the isPlaying variable
-                                HashMap<String, Boolean> allInfo = (HashMap<String, Boolean>) snapshot.getValue();
-                                if(allInfo != null){
-                                    // check isPlaying value
-                                    isPlaying = Boolean.parseBoolean(String.valueOf(allInfo.get("isPlaying")));
+                            }
 
-                                    // if isPlaying is false (game has ended), open EndGame activity
-                                    if (!isPlaying){
+                            // get the value of the isPlaying variable
+                            HashMap<String, Boolean> allInfo = (HashMap<String, Boolean>) snapshot.getValue();
+                            if(allInfo != null){
+                                // check isPlaying value
+                                isPlaying = Boolean.parseBoolean(String.valueOf(allInfo.get("isPlaying")));
+
+                                if(justRotated){
+                                    // if it was just rotated, set isPlaying back to true
+                                    justRotated = false;
+                                } else {
+                                    if(!isPlaying) {
                                         Intent in = new Intent(OnlineScoreboardActivity.this, EndGame.class);
                                         in.putExtra("scores", scoresMap);
                                         startActivity(in);
@@ -143,44 +156,37 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
         b_endGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // set the isPlaying value in the database to false (triggers a "database change" and opens endGame activity through there)
+                // set the isPlaying value in the database to false (triggers a database change and opens endGame activity through there)
                 room.child("isPlaying").setValue("false");
-
             }
         });
 
-        // if the host ends the game, set isPlaying to false and open new activity
-        b_endGame.setOnClickListener(new View.OnClickListener() {
+        // if the player leaves the game, game doesn't end for everyone else but they go to end screen with current scores
+        b_leaveGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // delete player from database
-                // alert asking if they really want to leave
-                // go back to main activity
-
-                // TODO: this stuff is temp
                 Intent in = new Intent(OnlineScoreboardActivity.this, EndGame.class);
                 in.putExtra("scores", scoresMap);
                 startActivity(in);
             }
         });
 
+        // sets the function of the add button in the top bar
         topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.b_add:
-                        Toast.makeText(getApplicationContext(),"Add",Toast.LENGTH_LONG).show();
-                        b_add2.performClick();
-                        break;
+                if (item.getItemId() == R.id.b_add) {
+                    Toast.makeText(getApplicationContext(), "Add", Toast.LENGTH_LONG).show();
+                    b_add.performClick();
                 }
                 return false;
             }
         });
 
-        b_add2.setOnClickListener(new View.OnClickListener() {
+        // brings up an alert dialog where player can enter their score and updates score in database
+        b_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 // get initial variables
                 LayoutInflater layoutInflater = getLayoutInflater();
                 View alertLayout = layoutInflater.inflate(R.layout.alert_layout, null);
@@ -206,7 +212,6 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
                 b_addScore.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
-
                         room.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -244,15 +249,29 @@ public class OnlineScoreboardActivity extends AppCompatActivity {
         });
     }
 
+    // if the app isn't in the process of being rotated, and the host leaves the game, isPlaying set to false
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // if the host leaves the game, the game ends
-        if(isHost){
-            DAORoom dao = new DAORoom();
-            DatabaseReference room = dao.getScores(roomCode);
+        if(isHost && !justRotated){
             room.child("isPlaying").setValue("false");
         }
+    }
+
+    // when you turn the phone, this function is called to save any data you wish to save
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // save data
+        justRotated = true;
+    }
+
+    // when phone is done turning, this function is called to restore any of that data you saved
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle saved) {
+        super.onRestoreInstanceState(saved);
+        justRotated = true;
+        room.child("isPlaying").setValue("true");
     }
 }
 

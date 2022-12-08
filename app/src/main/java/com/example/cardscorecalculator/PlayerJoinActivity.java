@@ -113,16 +113,11 @@ public class PlayerJoinActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
     // when you turn the phone, this function is called to save any data you wish to save
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         // save data
-        Log.d("TAG", "saved room code " + et_room.getText().toString());
         outState.putString("currentRoomCode", et_room.getText().toString());
         outState.putString("currentName", et_name.getText().toString());
     }
@@ -131,14 +126,11 @@ public class PlayerJoinActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle saved) {
         super.onRestoreInstanceState(saved);
-
-        Log.d("TAG", "retrieved " + saved.getString("currentRoomCode"));
         et_room.setText(saved.getString("currentRoomCode"));
         et_name.setText(saved.getString("currentName"));
-        Log.d("TAG", "retrieved");
-
     }
 
+    // creates a player object and adds to database
     private void addPlayer(String roomCode, String username){
         // add new users name to list of users in database
         dbr.child(roomCode).child("user_list").push().setValue(username);
@@ -154,9 +146,9 @@ public class PlayerJoinActivity extends AppCompatActivity {
         dbr.child(roomCode).child("timeStamp").setValue(getTime());
     }
 
+    // removes the event listener when leave activity
     public void removeEL(){
         dbr.removeEventListener(vel);
-        Log.d("TAG", "removed event listener");
     }
 
     // Returns a formatted string of the current system time

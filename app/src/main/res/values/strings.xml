@@ -61,6 +61,7 @@
     <!--    Online Scoreboard -->
     <string name="add">add</string>
     <string name="cancel">Cancel</string>
+    <string name="b_leaveOLGame">Leave Game</string>
     <string name="onlineScoreboardTitle">Scoreboard</string>
 
     <!--    Sports Set up -->
@@ -91,6 +92,8 @@
     <string name="b_reset">reset</string>
     <string name="b_start">start</string>
     <string name="b_stop">stop</string>
+    <string name="channel_name">Timer</string>
+    <string name="channel_description">A timer for game play</string>
 
 
     <!--    Help -->
@@ -114,11 +117,10 @@
 
     <!--     Settings -->
     <string name="settingsTitle">Settings</string>
-    <string-array name="textSizeOptions">
-        <item>Small</item>
-        <item>Medium</item>
-        <item>Large</item>
-    </string-array>
+    <string name="darkModeSwitch">Dark Mode</string>
+    <string name="notificationSwitch">Push Notifications</string>
+    <string name="soundSwitch">Sound</string>
+
 
 
 </resources>

@@ -1,12 +1,19 @@
 package com.example.cardscorecalculator;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -19,14 +26,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.appbar.MaterialToolbar;
-
 public class TimerFragment extends Fragment {
     Button b_start, b_stop, b_reset;
     ImageButton b_addHour, b_addMin, b_addSec, b_subHour, b_subMin, b_subSec;
     TextView t_hour, t_min, t_sec;
     long hour=0, min=0, sec=0;
-    boolean timerIsRunning = false;
+    boolean timerIsRunning = false, sound, notification;
+    private static final String CHANNEL_ID = "0";
+    NotificationManagerCompat notificationManager;
+    NotificationCompat.Builder builder;
 
     public TimerFragment() {
         // Required empty public constructor
@@ -35,6 +43,11 @@ public class TimerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_timer, container, false);
+
+        // retrieve settings
+        getSharedPreferences();
+
+        createNotificationChannel();
 
         // connect vars to views
         b_addHour = v.findViewById(R.id.b_addHours);
@@ -49,6 +62,22 @@ public class TimerFragment extends Fragment {
         t_hour = v.findViewById(R.id.t_Timerhours);
         t_min = v.findViewById(R.id.t_timerMins);
         t_sec = v.findViewById(R.id.t_timerSecs);
+
+        // Create an explicit intent for an Activity in your app
+        Intent intent = new Intent(requireActivity(), TimerActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(requireActivity(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        // Building push notification
+        builder = new NotificationCompat.Builder(requireActivity(), CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("ScoreKeep")
+                .setContentText("Timer is finished!")
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setAutoCancel(true);
+
+        notificationManager = NotificationManagerCompat.from(requireActivity());
 
         // sets visibility/clickability of buttons based on if the timer is running
         if(timerIsRunning){
@@ -273,6 +302,14 @@ public class TimerFragment extends Fragment {
                 sec = 0;
                 Log.d("TAG", "Timer Ended");
                 Toast.makeText(getActivity(), "Timer finished!", Toast.LENGTH_SHORT).show();
+                if(sound){
+                    // TODO: make sound
+                }
+                if(notification){
+                    // send push notification
+                    notificationManager.notify(111, builder.build());
+                    Log.d("TAG", "Sent push notification");
+                }
             }
 
             setHr(hour);
@@ -351,6 +388,33 @@ public class TimerFragment extends Fragment {
         outState.putString("currentHour", t_hour.getText().toString());
         outState.putString("currentMin", t_min.getText().toString());
         outState.putString("currentSec", t_sec.getText().toString());
+    }
+
+    // Retrieve shared preferences file
+    public void getSharedPreferences(){
+        // get values from shared preferences
+        SharedPreferences sh = this.requireActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+
+        // retrieve variables from file
+        sound = sh.getBoolean("soundSetting", true);
+        notification = sh.getBoolean("notificationSetting", true);
+
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = requireActivity().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
 }
